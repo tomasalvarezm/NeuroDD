@@ -1,0 +1,135 @@
+import scripts.Symptom
+import scripts.Disease
+import scripts.Patient
+
+rule "Confirm Alzheimer"
+    when
+        $patient : Patient($symptoms : symptoms)
+         // Iterar sobre cada síntoma en la lista
+        $symptom : Symptom() from $symptoms
+        eval(
+            Symptom(name != "pain_when_flexing_upper_limb") &&
+            Symptom(name != "partial_or_complete_paralysis") &&
+            Symptom(name != "incomplete_voiding") &&
+            Symptom(name != "hiperestesia") &&
+            Symptom(name != "increased_urination") &&
+            Symptom(name != "optic_neuritis") &&
+            Symptom(name != "seizures") &&
+            Symptom(name != "spasms") &&
+            (Symptom(name == "memory_impairment") ||
+            Symptom(name == "orientation_impairment"))
+        )
+
+    then
+      //TODO ver si esto es correcto
+        System.out.println("Alzheimer's disease is added to the list.");
+        insert(new Disease("alzheimer"));
+        //$patient.addDisease(new Disease("alzheimer"));
+        modify($patient){ addDisease(new Disease("alzheimer")) }
+end
+
+rule "Confirm ALS"
+    when
+        $patient : Patient($symptoms : symptoms)
+
+        // Iterar sobre cada síntoma en la lista
+        $symptom : Symptom() from $symptoms
+        eval(
+            Symptom(name != "blurred_vision") &&
+            Symptom(name != "constipation") &&
+            Symptom(name != "increased_urination") &&
+            Symptom(name != "psicosis") &&
+            Symptom(name != "optic_neuritis") &&
+            (Symptom(name == "muscle_weakness") ||
+             Symptom(name == "partial_or_complete_paralysis") ||
+             Symptom(name == "inability_to_move_completely")
+             )
+        )
+
+    then
+        //TODO descartar la enfermedad de Amyotrophic
+        System.out.println("Amyotrophic lateral sclerosis (ALS) is added.");
+        insert(new Disease("amyotrophicLateralSclerosis"));
+        modify($patient){ addDisease(new Disease("amyotrophicLateralSclerosis")) }
+end
+
+rule "Confirm Huntington"
+    when
+         $patient : Patient($symptoms : symptoms)
+
+         // Iterar sobre cada síntoma en la lista
+        $symptom : Symptom() from $symptoms
+        eval(
+            Symptom(name != "optic_neuritis") &&
+            Symptom(name != "ptosis") &&
+            Symptom(name != "constipation") &&
+            Symptom(name != "loss_of_gag_reflex") &&
+            (Symptom(name == "involvement_in_voluntary_skeletal_muscles"))
+            )
+    then
+        //TODO descartar la enfermedad de Huntington
+        System.out.println("Huntington’s disease is added.");
+         insert(new Disease("huntington"));
+         modify($patient){ addDisease(new Disease("huntington")) }
+end
+
+rule "Confirm MultipleSclerosis"
+    when
+        $patient : Patient($symptoms : symptoms)
+
+        // Iterar sobre cada síntoma en la lista
+        $symptom : Symptom() from $symptoms
+         eval(
+              Symptom(name != "respiratory_compromise_during_crisis") &&
+              Symptom(name != "involvement_of_voluntary_skeletal_muscles") &&
+              Symptom(name != "bent_posture") &&
+              Symptom(name != "pain_when_flexing_upper_limb") &&
+              (Symptom(name == "blurred_vision")||Symptom(name == "emotional_incontinence"))
+              )
+    then
+        //TODO descartar la enfermedad de Multiple Sclerosis
+        System.out.println("Multiple sclerosis is added.");
+         insert(new Disease("multipleSclerosis"));
+         modify($patient){ addDisease(new Disease("multipleSclerosis")) }
+end
+
+rule "Confirm MyastheniaGravis"
+    when
+        $patient : Patient($symptoms : symptoms)
+        // Iterar sobre cada síntoma en la lista
+        $symptom : Symptom() from $symptoms
+        eval(
+            Symptom(name != "tremor") &&
+            Symptom(name != "inability_to_move_completely") &&
+            Symptom(name != "delusions") &&
+            Symptom(name != "hallucinations") &&
+            Symptom(name != "psicosis") &&
+            (Symptom(name == "muscle_weakness"))
+         )
+    then
+        //TODO descartar la enfermedad de Myasthenia gravis
+        System.out.println("Myasthenia gravis is added.");
+        insert(new Disease("myastheniaGravis"));
+        modify($patient){ addDisease(new Disease("myastheniaGravis")) }
+end
+
+rule "Confirm Parkinson"
+    when
+        $patient : Patient($symptoms : symptoms)
+        // Iterar sobre cada síntoma en la lista
+        $symptom : Symptom() from $symptoms
+
+        eval(
+                    Symptom(name != "difficulty_breathing") &&
+                    Symptom(name != "increased_urination") &&
+                    Symptom(name != "optic_neuritis") &&
+                    Symptom(name != "seizures") &&
+                    (Symptom(name == "bradykinesia") ||
+                     Symptom(name == "muscle_stiffness"))
+                 )
+    then
+        //TODO descartar la enfermedad de Parkinson
+        System.out.println("Parkinson’s disease is added.");
+         insert(new Disease("parkinson"));
+         modify($patient){ addDisease(new Disease("parkinson")) }
+end
