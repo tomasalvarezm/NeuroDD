@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AppController">
+   <center>
+      <TabPane prefHeight="200.0" prefWidth="617.0" style="-fx-background-color: #282828;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Symptoms selection">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="555.0" style="-fx-background-color: #282828;">
+                     <children>
+                        <Label layoutX="27.0" layoutY="39.0" prefHeight="17.0" prefWidth="170.0" style="-fx-background-color: #282828;" text="Motor" textFill="#c9c9c9" />
+                        <HBox alignment="CENTER_LEFT" layoutX="181.0" layoutY="33.0" prefHeight="17.0" prefWidth="140.0">
+                           <children>
+                              <ImageView fitHeight="17.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/Search.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="searchTextMotor" onKeyTyped="#filterMotorSymptoms" prefHeight="17.0" prefWidth="170.0" promptText="Search" style="-fx-background-color: #282828; -fx-border-style: solid; -fx-border-width: 0 0 1 0; -fx-border-color: #3d3d3d; -fx-text-fill: #c9c9c9;" />
+                           </children>
+                        </HBox>
+                        <ScrollPane hbarPolicy="NEVER" layoutX="27.0" layoutY="62.0" vbarPolicy="ALWAYS">
+                           <content>
+                              <VBox alignment="CENTER" prefHeight="141.0" prefWidth="280.0" spacing="12.0" style="-fx-background-color: #3d3d3d;">
+                                 <children>
+                                    <CheckBox fx:id="bentPosture" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Bent posture" textFill="WHITE" />
+                                    <CheckBox fx:id="bradykinesia" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Bradykinesia (slow movement)" textFill="WHITE" />
+                                    <CheckBox fx:id="facialMovements" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Facial movements (including grimaces)" textFill="WHITE" />
+                                    <CheckBox fx:id="hypomimia" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Hypomimia (Lack of facial expression)" textFill="WHITE" />
+                                    <CheckBox fx:id="inabilityToMove" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Inability to completely move" textFill="WHITE" />
+                                    <CheckBox fx:id="involvementVoluntarySkeletalMuscles" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Involvement of voluntary skeletal muscles" textFill="WHITE" />
+                                    <CheckBox fx:id="lackOfCoordination" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Lack of coordination" textFill="WHITE" />
+                                    <CheckBox fx:id="muscleCramps" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Muscle cramps" textFill="WHITE" />
+                                    <CheckBox fx:id="muscleStiffness" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Muscle stiffness" textFill="WHITE" />
+                                    <CheckBox fx:id="muscleWeakness" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Muscle weakness" textFill="WHITE" />
+                                    <CheckBox fx:id="painFlexingUpperLimb" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Pain when flexing upper limb" textFill="WHITE" />
+                                    <CheckBox fx:id="partialOrCompleteParalysis" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Partial or complete paralysis" textFill="WHITE" />
+                                    <CheckBox fx:id="tingling" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Paresthesia (tingling)" textFill="WHITE" />
+                                    <CheckBox fx:id="ptosis" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Ptosis (eyelid drop)" textFill="WHITE" />
+                                    <CheckBox fx:id="reducedBlinking" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Reduced blinking" textFill="WHITE" />
+                                    <CheckBox fx:id="tremor" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Tremor" textFill="WHITE" />
+                                    <CheckBox fx:id="unsteadyGait" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Unsteady gait" textFill="WHITE" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <Label layoutX="374.0" layoutY="39.0" prefHeight="17.0" prefWidth="170.0" style="-fx-background-color: #282828;" text="Cognitive" textFill="#c9c9c9" />
+                        <HBox alignment="CENTER_LEFT" layoutX="528.0" layoutY="33.0" prefHeight="17.0" prefWidth="140.0">
+                           <children>
+                              <ImageView fitHeight="17.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/Search.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="searchTextCognitive" onKeyTyped="#filterCognitiveSymptoms" prefHeight="17.0" prefWidth="170.0" promptText="Search" style="-fx-background-color: #282828; -fx-border-style: solid; -fx-border-width: 0 0 1 0; -fx-border-color: #3d3d3d; -fx-text-fill: #c9c9c9;" />
+                           </children>
+                        </HBox>
+                        <ScrollPane hbarPolicy="NEVER" layoutX="374.0" layoutY="62.0" vbarPolicy="ALWAYS">
+                           <content>
+                              <VBox alignment="CENTER" prefHeight="141.0" prefWidth="280.0" spacing="12.0" style="-fx-background-color: #3d3d3d;">
+                                 <children>
+                                    <CheckBox fx:id="communicationDifficulty" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Communication difficulty" textFill="WHITE" />
+                                    <CheckBox fx:id="confusion" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Confusion" textFill="WHITE" />
+                                    <CheckBox fx:id="difficultyLearning" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Difficulty learning" textFill="WHITE" />
+                                    <CheckBox fx:id="difficultyProblemSolving" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Difficulty problem solving" textFill="WHITE" />
+                                    <CheckBox fx:id="inabilityPerformRoutineActivities" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Inability to perform routine activities" textFill="WHITE" />
+                                    <CheckBox fx:id="incompleteVoiding" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Incomplete voiding" textFill="WHITE" />
+                                    <CheckBox fx:id="lackOfAttention" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Lack of attention" textFill="WHITE" />
+                                    <CheckBox fx:id="memoryImpairment" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Memory impairment" textFill="WHITE" />
+                                    <CheckBox fx:id="orientationImpairment" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Orientation impairment" textFill="WHITE" />
+                                    <CheckBox fx:id="scanningSpeech" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Scanning speech" textFill="WHITE" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <Label layoutX="28.0" layoutY="241.0" prefHeight="17.0" prefWidth="170.0" style="-fx-background-color: #282828;" text="Psychiatric" textFill="#c9c9c9" />
+                        <HBox alignment="CENTER_LEFT" layoutX="181.0" layoutY="234.0" prefHeight="17.0" prefWidth="140.0">
+                           <children>
+                              <ImageView fitHeight="17.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/Search.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="searchTextPsychiatric" onKeyTyped="#filterPsychiatricSymptoms" prefHeight="17.0" prefWidth="170.0" promptText="Search" style="-fx-background-color: #282828; -fx-border-style: solid; -fx-border-width: 0 0 1 0; -fx-border-color: #3d3d3d; -fx-text-fill: #c9c9c9;" />
+                           </children>
+                        </HBox>
+                        <ScrollPane hbarPolicy="NEVER" layoutX="27.0" layoutY="265.0" vbarPolicy="ALWAYS">
+                           <content>
+                              <VBox alignment="CENTER" prefHeight="141.0" prefWidth="280.0" spacing="12.0" style="-fx-background-color: #3d3d3d;">
+                                 <children>
+                                    <CheckBox fx:id="anxietyStressTension" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Anxiety, stress, or tension" textFill="WHITE" />
+                                    <CheckBox fx:id="behavioralDisturbances" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Behavioral disturbances" textFill="WHITE" />
+                                    <CheckBox fx:id="delusions" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Delusions" textFill="WHITE" />
+                                    <CheckBox fx:id="depression" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Depression" textFill="WHITE" />
+                                    <CheckBox fx:id="emotionalIncontinence" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Emotional incontinence" textFill="WHITE" />
+                                    <CheckBox fx:id="hallucinations" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Hallucinations" textFill="WHITE" />
+                                    <CheckBox fx:id="irritability" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Irritability" textFill="WHITE" />
+                                    <CheckBox fx:id="psychosis" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Psychosis" textFill="WHITE" />
+                                    <CheckBox fx:id="socialIsolation" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Social isolation" textFill="WHITE" />
+                                    <CheckBox fx:id="sleepDisturbance" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Sleep disturbance" textFill="WHITE" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <Label layoutX="375.0" layoutY="242.0" prefHeight="17.0" prefWidth="170.0" style="-fx-background-color: #282828;" text="Others" textFill="#c9c9c9" />
+                        <HBox alignment="CENTER_LEFT" layoutX="528.0" layoutY="235.0" prefHeight="17.0" prefWidth="140.0">
+                           <children>
+                              <ImageView fitHeight="17.0" fitWidth="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../icons/Search.png" />
+                                 </image>
+                              </ImageView>
+                              <TextField fx:id="searchTextOthers" onKeyTyped="#filterOtherSymptoms" prefHeight="17.0" prefWidth="170.0" promptText="Search" style="-fx-background-color: #282828; -fx-border-style: solid; -fx-border-width: 0 0 1 0; -fx-border-color: #3d3d3d; -fx-text-fill: #c9c9c9;" />
+                           </children>
+                        </HBox>
+                        <ScrollPane hbarPolicy="NEVER" layoutX="374.0" layoutY="265.0" vbarPolicy="ALWAYS">
+                           <content>
+                              <VBox alignment="CENTER" prefHeight="141.0" prefWidth="280.0" spacing="12.0" style="-fx-background-color: #3d3d3d;">
+                                 <children>
+                                    <CheckBox fx:id="blurredVision" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Blurred vision" textFill="WHITE" />
+                                    <CheckBox fx:id="constipation" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Constipation" textFill="WHITE" />
+                                    <CheckBox fx:id="delirium" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Delirium" textFill="WHITE" />
+                                    <CheckBox fx:id="difficultyBreathing" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Difficulty breathing" textFill="WHITE" />
+                                    <CheckBox fx:id="difficultySwallowing" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Difficulty swallowing" textFill="WHITE" />
+                                    <CheckBox fx:id="diplopia" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Diplopia" textFill="WHITE" />
+                                    <CheckBox fx:id="excessiveSalivation" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Excessive salivation" textFill="WHITE" />
+                                    <CheckBox fx:id="hyperesthesia" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Hyperesthesia" textFill="WHITE" />
+                                    <CheckBox fx:id="hyperreflexia" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Hyperreflexia" textFill="WHITE" />
+                                    <CheckBox fx:id="increasedUrination" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Increased urination" textFill="WHITE" />
+                                    <CheckBox fx:id="lossGagReflex" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Loss of gag reflex" textFill="WHITE" />
+                                    <CheckBox fx:id="opticNeuritis" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Optic neuritis" textFill="WHITE" />
+                                    <CheckBox fx:id="respiratoryCompromise" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Respiratory compromise during crisis" textFill="WHITE" />
+                                    <CheckBox fx:id="seizures" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Seizures" textFill="WHITE" />
+                                    <CheckBox fx:id="spasms" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Spasms" textFill="WHITE" />
+                                    <CheckBox fx:id="urinaryIncontinence" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Urinary incontinence" textFill="WHITE" />
+                                    <CheckBox fx:id="weightLoss" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Weight loss" textFill="WHITE" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="5.0" />
+                                 </padding>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                        <Button fx:id="diagnose_btn" layoutX="311.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleButtonDiagnose" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #357bf2;" text="Diagnose" textFill="WHITE" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab onSelectionChanged="#HideDiagnosisAlert" text="Diagnosis">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="lbl" layoutX="158.0" layoutY="225.0" prefHeight="74.0" prefWidth="249.0" textFill="WHITE" />
+                     </children></AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <left>
+      <Pane prefHeight="600.0" prefWidth="162.0" style="-fx-background-color: #282828;" BorderPane.alignment="CENTER">
+         <children>
+            <Label alignment="CENTER" layoutX="10.0" layoutY="130.0" prefHeight="76.0" prefWidth="143.0" textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="76.0" fitWidth="144.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/Logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
+            <ImageView fitHeight="52.0" fitWidth="47.0" layoutX="59.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../icons/Connect.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="diagnosisMessageAlert" alignment="CENTER" layoutX="9.0" layoutY="333.0" prefHeight="17.0" prefWidth="141.0" text="New diagnosis" textFill="WHITE" visible="false">
+               <graphic>
+                  <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../icons/Info.png" />
+                     </image></ImageView>
+               </graphic>
+            </Label>
+         </children>
+      </Pane>
+   </left>
+</BorderPane>
