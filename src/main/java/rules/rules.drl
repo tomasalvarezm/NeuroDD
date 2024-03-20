@@ -2,6 +2,8 @@ import scripts.Symptom
 import scripts.Disease
 import scripts.Patient
 
+unit PatientUnit;
+
 rule "Confirm Alzheimer"
     when
         $patient : Patient($symptoms : symptoms)
@@ -23,7 +25,7 @@ rule "Confirm Alzheimer"
     then
       //TODO ver si esto es correcto
         System.out.println("Alzheimer's disease is added to the list.");
-        insert(new Disease("alzheimer"));
+        //insert(new Disease("alzheimer"));
         //$patient.addDisease(new Disease("alzheimer"));
         modify($patient){ addDisease(new Disease("alzheimer")) }
 end
@@ -49,7 +51,7 @@ rule "Confirm ALS"
     then
         //TODO descartar la enfermedad de Amyotrophic
         System.out.println("Amyotrophic lateral sclerosis (ALS) is added.");
-        insert(new Disease("amyotrophicLateralSclerosis"));
+        //insert(new Disease("amyotrophicLateralSclerosis"));
         modify($patient){ addDisease(new Disease("amyotrophicLateralSclerosis")) }
 end
 
@@ -69,8 +71,8 @@ rule "Confirm Huntington"
     then
         //TODO descartar la enfermedad de Huntington
         System.out.println("Huntington’s disease is added.");
-         insert(new Disease("huntington"));
-         modify($patient){ addDisease(new Disease("huntington")) }
+        //insert(new Disease("huntington"));
+        modify($patient){ addDisease(new Disease("huntington")) }
 end
 
 rule "Confirm MultipleSclerosis"
@@ -89,8 +91,8 @@ rule "Confirm MultipleSclerosis"
     then
         //TODO descartar la enfermedad de Multiple Sclerosis
         System.out.println("Multiple sclerosis is added.");
-         insert(new Disease("multipleSclerosis"));
-         modify($patient){ addDisease(new Disease("multipleSclerosis")) }
+        //insert(new Disease("multipleSclerosis"));
+        modify($patient){ addDisease(new Disease("multipleSclerosis")) }
 end
 
 rule "Confirm MyastheniaGravis"
@@ -109,7 +111,7 @@ rule "Confirm MyastheniaGravis"
     then
         //TODO descartar la enfermedad de Myasthenia gravis
         System.out.println("Myasthenia gravis is added.");
-        insert(new Disease("myastheniaGravis"));
+        //insert(new Disease("myastheniaGravis"));
         modify($patient){ addDisease(new Disease("myastheniaGravis")) }
 end
 
@@ -130,6 +132,23 @@ rule "Confirm Parkinson"
     then
         //TODO descartar la enfermedad de Parkinson
         System.out.println("Parkinson’s disease is added.");
-         insert(new Disease("parkinson"));
-         modify($patient){ addDisease(new Disease("parkinson")) }
+        //insert(new Disease("parkinson"));
+        modify($patient){ addDisease(new Disease("parkinson")) }
 end
+
+rule "Asign weight for alzheimer's symptoms"
+    when
+        $patient : Patient($diseases : diseases)
+        exists Disease(name == "alzheimer") from $diseases
+    then
+        //acceder al la estructura del lector y asignar los
+        //pesos segun los sintomas de este paciente.
+        //coger la disease $disease que es alzheimer y los pesos suman al indice
+end
+
+query DiagnoseDisease
+    $patients : /patients[ !diseases.isEmpty() ]
+end
+
+
+

@@ -4,24 +4,18 @@ import org.drools.ruleunits.api.DataSource;
 import org.drools.ruleunits.api.DataStore;
 import org.drools.ruleunits.api.RuleUnitData;
 
+
 import java.util.ArrayList;
 
 
 public class PatientUnit implements RuleUnitData {
 
-    private Patient patient;
-    private ArrayList<Symptom> symptoms;
+    private final DataStore<Patient> patients;
 
 
-    public PatientUnit() {
-        this.symptoms = symptoms;
-    }
-    public void setSymptoms(ArrayList<Symptom> symptoms) {
-        this.symptoms = symptoms;
-    }
-    public void setPatient(Patient patient) {
-        this.patient = patient;
-    }
+    public PatientUnit() { this(DataSource.createStore()); }
+    public PatientUnit(DataStore<Patient> patients) { this.patients = patients; }
+    public DataStore<Patient> getPatients() { return patients; }
 }
 
 

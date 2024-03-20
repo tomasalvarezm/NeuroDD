@@ -6,6 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import scripts.Patient;
 //import org.kie.api.KieServices;
 //import org.kie.api.runtime.KieContainer;
 
@@ -41,6 +42,7 @@ public class AppController {
 //        KieServices ks = KieServices.Factory.get();
 //        KieContainer kc = ks.getKieClasspathContainer();
 //        KieSession ksession = kc.newKieSession("NAME OF THE KSESSION IN KMODULE");
+
 
         ArrayList<CheckBox> allCheckBoxes = new ArrayList<>();
         allCheckBoxes.addAll(getCheckBoxes(searchTextMotor, 2));

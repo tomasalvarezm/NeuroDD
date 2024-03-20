@@ -10,9 +10,9 @@ public class Patient {
     private int age;
     private Date dob;
     private Sex sex;
-
     public ArrayList<Symptom> symptoms;
     public ArrayList<Disease> diseases;
+
     public Patient(String id, String name, int age, Date dob, Sex sex) {
         this.id = id;
         this.name = name;
@@ -40,4 +40,6 @@ public class Patient {
     public ArrayList<Disease> getDiseases() {
         return diseases;
     }
+
+
 }
