@@ -1,4 +1,4 @@
-package scripts;
+package diagnosis;
 
 public enum Sex {
     FEMALE,

@@ -1,6 +1,6 @@
-import scripts.Symptom
-import scripts.Disease
-import scripts.Patient
+import diagnosis.Patient;
+import diagnosis.Disease;
+import diagnosis.Symptom;
 
 unit PatientUnit;
 
@@ -134,20 +134,6 @@ rule "Confirm Parkinson"
         System.out.println("Parkinson’s disease is added.");
         //insert(new Disease("parkinson"));
         modify($patient){ addDisease(new Disease("parkinson")) }
-end
-
-rule "Asign weight for alzheimer's symptoms"
-    when
-        $patient : Patient($diseases : diseases)
-        exists Disease(name == "alzheimer") from $diseases
-    then
-        //acceder al la estructura del lector y asignar los
-        //pesos segun los sintomas de este paciente.
-        //coger la disease $disease que es alzheimer y los pesos suman al indice
-end
-
-query DiagnoseDisease
-    $patients : /patients[ !diseases.isEmpty() ]
 end
 
 

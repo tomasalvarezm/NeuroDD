@@ -1,17 +1,17 @@
 package controllers;
 
+import diagnosis.*;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import scripts.Patient;
 //import org.kie.api.KieServices;
 //import org.kie.api.runtime.KieContainer;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class AppController {
@@ -34,15 +34,13 @@ public class AppController {
     public Label diagnosisMessageAlert;
 
     public void handleButtonDiagnose(ActionEvent actionEvent) {
-        int count = 0;
-        if(tremor.isSelected()){
-            count++;
-        }
-        lbl.setText("Symptoms selected: " + String.valueOf(count));
+
 //        KieServices ks = KieServices.Factory.get();
 //        KieContainer kc = ks.getKieClasspathContainer();
 //        KieSession ksession = kc.newKieSession("NAME OF THE KSESSION IN KMODULE");
 
+        LocalDate date_of_birth = LocalDate.now();
+        Patient patient = new Patient("1", "Patient 1", 20, date_of_birth, Sex.FEMALE);
 
         ArrayList<CheckBox> allCheckBoxes = new ArrayList<>();
         allCheckBoxes.addAll(getCheckBoxes(searchTextMotor, 2));
@@ -52,15 +50,37 @@ public class AppController {
 
         for (CheckBox checkBox : allCheckBoxes){
             if (checkBox.isSelected()){
-                // ksession.insert( new Symptom(checkBox.getText().toLowerCase().trim()) );
-                System.out.println(checkBox.getText().toLowerCase().trim());
+                Symptom symptom = new Symptom(checkBox.getText().toLowerCase().trim());
+                patient.addSymptom(symptom);
             }
         }
+        System.out.println(patient);
+
+        // ksession.insert(patient);
+
         // ksession.fireAllRules();
         // ksession.dispose();
 
-        diagnosisMessageAlert.setVisible(true);
+        String pathname = "C:\\Users\\User\\Documents\\Universidad\\4 ANO\\DSS\\NeuroDD\\src\\main\\resources\\symptom_weights\\Symptoms_DSS.xlsx";
+        SymptomWeight symptomWeight = new SymptomWeight(pathname);
+//        System.out.println(symptomWeight.getAlzheimer_weights());
+//        System.out.println(symptomWeight.getHuntington_weights());
+//        System.out.println(symptomWeight.getAmyotrophic_lateral_sclerosis_weights());
+//        System.out.println(symptomWeight.getMyasthenia_gravis_weights());
+//        System.out.println(symptomWeight.getMultiple_sclerosis_weights());
+//        System.out.println(symptomWeight.getParkinson_weights());
 
+
+        patient.calculateDiseaseScore(symptomWeight.getAlzheimer_weights(), "alzheimer");
+        patient.calculateDiseaseScore(symptomWeight.getAmyotrophic_lateral_sclerosis_weights(), "amyotrophic lateral sclerosis");
+        patient.calculateDiseaseScore(symptomWeight.getHuntington_weights(), "huntington");
+        patient.calculateDiseaseScore(symptomWeight.getMultiple_sclerosis_weights(), "multiple sclerosis");
+        patient.calculateDiseaseScore(symptomWeight.getMyasthenia_gravis_weights(), "myasthenia gravis");
+        patient.calculateDiseaseScore(symptomWeight.getParkinson_weights(), "parkinson");
+
+        System.out.println(patient);
+
+        diagnosisMessageAlert.setVisible(true);
 
     }
 

@@ -15,7 +15,6 @@ public class App extends Application {
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        //hola soy maria vivas
     }
 
     public static void main(String[] args) {

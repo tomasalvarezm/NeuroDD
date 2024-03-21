@@ -1,11 +1,10 @@
+package diagnosis;
+
 import org.drools.ruleunits.api.RuleUnitProvider;
 import org.drools.ruleunits.api.RuleUnitInstance;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import scripts.Patient;
-import scripts.PatientUnit;
-import scripts.Symptom;
 
 import java.util.ArrayList;
 
