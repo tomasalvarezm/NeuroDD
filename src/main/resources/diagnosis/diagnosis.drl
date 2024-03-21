@@ -10,16 +10,16 @@ rule "Confirm Alzheimer"
          // Iterar sobre cada síntoma en la lista
         $symptom : Symptom() from $symptoms
         eval(
-            Symptom(name != "pain_when_flexing_upper_limb") &&
-            Symptom(name != "partial_or_complete_paralysis") &&
-            Symptom(name != "incomplete_voiding") &&
-            Symptom(name != "hiperestesia") &&
-            Symptom(name != "increased_urination") &&
-            Symptom(name != "optic_neuritis") &&
+            Symptom(name != "pain when flexing upper limb") &&
+            Symptom(name != "partial or complete paralysis") &&
+            Symptom(name != "incomplete voiding") &&
+            Symptom(name != "hiperesthesia") &&
+            Symptom(name != "increased urination") &&
+            Symptom(name != "optic neuritis") &&
             Symptom(name != "seizures") &&
             Symptom(name != "spasms") &&
-            (Symptom(name == "memory_impairment") ||
-            Symptom(name == "orientation_impairment"))
+            (Symptom(name == "memory impairment") ||
+            Symptom(name == "orientation impairment"))
         )
 
     then
@@ -39,12 +39,12 @@ rule "Confirm ALS"
         eval(
             Symptom(name != "blurred_vision") &&
             Symptom(name != "constipation") &&
-            Symptom(name != "increased_urination") &&
+            Symptom(name != "increased urination") &&
             Symptom(name != "psicosis") &&
-            Symptom(name != "optic_neuritis") &&
-            (Symptom(name == "muscle_weakness") ||
-             Symptom(name == "partial_or_complete_paralysis") ||
-             Symptom(name == "inability_to_move_completely")
+            Symptom(name != "optic neuritis") &&
+            (Symptom(name == "muscle weakness") ||
+             Symptom(name == "partial or complete paralysis") ||
+             Symptom(name == "inability to completely move")
              )
         )
 
@@ -62,11 +62,11 @@ rule "Confirm Huntington"
          // Iterar sobre cada síntoma en la lista
         $symptom : Symptom() from $symptoms
         eval(
-            Symptom(name != "optic_neuritis") &&
+            Symptom(name != "optic neuritis") &&
             Symptom(name != "ptosis") &&
             Symptom(name != "constipation") &&
-            Symptom(name != "loss_of_gag_reflex") &&
-            (Symptom(name == "involvement_in_voluntary_skeletal_muscles"))
+            Symptom(name != "loss of gag reflex") &&
+            (Symptom(name == "involvement of voluntary skeletal muscles"))
             )
     then
         //TODO descartar la enfermedad de Huntington
@@ -82,11 +82,11 @@ rule "Confirm MultipleSclerosis"
         // Iterar sobre cada síntoma en la lista
         $symptom : Symptom() from $symptoms
          eval(
-              Symptom(name != "respiratory_compromise_during_crisis") &&
-              Symptom(name != "involvement_of_voluntary_skeletal_muscles") &&
-              Symptom(name != "bent_posture") &&
-              Symptom(name != "pain_when_flexing_upper_limb") &&
-              (Symptom(name == "blurred_vision")||Symptom(name == "emotional_incontinence"))
+              Symptom(name != "respiratory compromise during crisis") &&
+              Symptom(name != "involvement of voluntary skeletal muscles") &&
+              Symptom(name != "bent posture") &&
+              Symptom(name != "pain when flexing upper limb") &&
+              (Symptom(name == "blurred vision")||Symptom(name == "emotional incontinence"))
               )
     then
         //TODO descartar la enfermedad de Multiple Sclerosis
@@ -102,11 +102,11 @@ rule "Confirm MyastheniaGravis"
         $symptom : Symptom() from $symptoms
         eval(
             Symptom(name != "tremor") &&
-            Symptom(name != "inability_to_move_completely") &&
+            Symptom(name != "inability to completely move") &&
             Symptom(name != "delusions") &&
             Symptom(name != "hallucinations") &&
             Symptom(name != "psicosis") &&
-            (Symptom(name == "muscle_weakness"))
+            (Symptom(name == "muscle weakness"))
          )
     then
         //TODO descartar la enfermedad de Myasthenia gravis
@@ -122,12 +122,12 @@ rule "Confirm Parkinson"
         $symptom : Symptom() from $symptoms
 
         eval(
-                    Symptom(name != "difficulty_breathing") &&
-                    Symptom(name != "increased_urination") &&
-                    Symptom(name != "optic_neuritis") &&
+                    Symptom(name != "difficulty breathing") &&
+                    Symptom(name != "increased urination") &&
+                    Symptom(name != "optic neuritis") &&
                     Symptom(name != "seizures") &&
                     (Symptom(name == "bradykinesia") ||
-                     Symptom(name == "muscle_stiffness"))
+                     Symptom(name == "muscle stiffness"))
                  )
     then
         //TODO descartar la enfermedad de Parkinson
