@@ -61,7 +61,7 @@ public class AppController {
         // ksession.fireAllRules();
         // ksession.dispose();
 
-        String pathname = "C:\\Users\\User\\Documents\\Universidad\\4 ANO\\DSS\\NeuroDD\\src\\main\\resources\\symptom_weights\\Symptoms_DSS.xlsx";
+        String pathname = "../NeuroDD/src/main/resources/symptom_weights/Symptoms_DSS.xlsx";
         SymptomWeight symptomWeight = new SymptomWeight(pathname);
 //        System.out.println(symptomWeight.getAlzheimer_weights());
 //        System.out.println(symptomWeight.getHuntington_weights());
