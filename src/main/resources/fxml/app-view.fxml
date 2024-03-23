@@ -3,11 +3,14 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -20,7 +23,34 @@
    <center>
       <TabPane prefHeight="200.0" prefWidth="617.0" style="-fx-background-color: #282828;" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
         <tabs>
-          <Tab text="Symptoms selection">
+            <Tab text="Patient Info">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="122.0" fitWidth="125.0" layoutX="283.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/Avatar.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="dni_txt" layoutX="233.0" layoutY="200.0" prefHeight="25.0" prefWidth="223.0" promptText="DNI" style="-fx-background-color: #3b3b3b; -fx-text-fill: #c9c9c9;" />
+                        <TextField fx:id="name_txt" layoutX="233.0" layoutY="243.0" prefHeight="25.0" prefWidth="223.0" promptText="Full name" style="-fx-background-color: #3b3b3b; -fx-text-fill: #c9c9c9;" />
+                        <ChoiceBox fx:id="sex_box" layoutX="233.0" layoutY="290.0" prefHeight="25.0" prefWidth="223.0" />
+                        <DatePicker fx:id="date_picker" layoutX="233.0" layoutY="335.0" prefHeight="25.0" prefWidth="223.0" promptText="Date of birth" style="-fx-background-color: #3b3b3b; -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);">
+                           <effect>
+                              <ColorAdjust />
+                           </effect>
+                        </DatePicker>
+                        <Button fx:id="save_info_btn" layoutX="311.0" layoutY="450.0" mnemonicParsing="false" onAction="#handleButtonSaveInfo" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #357bf2;" text="Save Info" textFill="WHITE" />
+                        <ImageView fx:id="ok_img" fitHeight="21.0" fitWidth="24.0" layoutX="401.0" layoutY="452.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../icons/Ok.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Symptom selection">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="478.0" prefWidth="555.0" style="-fx-background-color: #282828;">
                      <children>
@@ -171,7 +201,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab onSelectionChanged="#HideDiagnosisAlert" text="Diagnosis">
+          <Tab onSelectionChanged="#HideDiagnosisAlert" text="Diagnosis ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>

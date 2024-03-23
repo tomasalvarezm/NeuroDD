@@ -1,16 +1,15 @@
 package diagnosis;
 
-import java.io.InputStream;
 import java.util.Map;
 import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
+
 import org.apache.poi.xssf.usermodel.*;
 import org.apache.poi.ss.usermodel.*;
 
 
-public class SymptomWeight {
+public class SymptomWeights {
 
     private Map<String, Integer> alzheimer_weights;
     private Map<String, Integer> amyotrophic_lateral_sclerosis_weights;
@@ -19,7 +18,7 @@ public class SymptomWeight {
     private Map<String, Integer> myasthenia_gravis_weights;
     private Map<String, Integer> parkinson_weights;
 
-    public SymptomWeight(String pathname) {
+    public SymptomWeights(String pathname) {
         try {
             FileInputStream file = new FileInputStream(pathname);
 
