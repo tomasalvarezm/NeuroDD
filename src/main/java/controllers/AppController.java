@@ -67,7 +67,7 @@ public class AppController implements Initializable {
                 sex = Sex.FEMALE;
             }
             fadeTransition.playFromStart();
-            patient = new Patient(dni_txt.getText(), name_txt.getText(), 8, date_picker.getValue(), sex);
+            patient = new Patient(dni_txt.getText(), name_txt.getText(), 18, date_picker.getValue(), sex);
         }
     }
 
@@ -97,7 +97,6 @@ public class AppController implements Initializable {
                     patient.addSymptom(symptom);
                 }
             }
-            System.out.println(patient);
 
             // ksession.insert(patient);
 
@@ -113,13 +112,15 @@ public class AppController implements Initializable {
 //        System.out.println(symptomWeights.getMultiple_sclerosis_weights());
 //        System.out.println(symptomWeights.getParkinson_weights());
 
+            Disease alzheimer= new Disease("alzheimer");
+            patient.addDisease(alzheimer);
 
-            patient.calculateDiseaseScore(symptomWeights.getAlzheimer_weights(), "alzheimer");
-            patient.calculateDiseaseScore(symptomWeights.getAmyotrophic_lateral_sclerosis_weights(), "amyotrophic lateral sclerosis");
-            patient.calculateDiseaseScore(symptomWeights.getHuntington_weights(), "huntington");
-            patient.calculateDiseaseScore(symptomWeights.getMultiple_sclerosis_weights(), "multiple sclerosis");
-            patient.calculateDiseaseScore(symptomWeights.getMyasthenia_gravis_weights(), "myasthenia gravis");
-            patient.calculateDiseaseScore(symptomWeights.getParkinson_weights(), "parkinson");
+            patient.calculateDiseaseScore(symptomWeights.getAlzheimer_weights(), "alzheimer", symptomWeights.max_score_alzheimer);
+            patient.calculateDiseaseScore(symptomWeights.getAmyotrophic_lateral_sclerosis_weights(), "amyotrophic lateral sclerosis", symptomWeights.max_score_amyotrophic_lateral_sclerosis);
+            patient.calculateDiseaseScore(symptomWeights.getHuntington_weights(), "huntington", symptomWeights.max_score_huntington);
+            patient.calculateDiseaseScore(symptomWeights.getMultiple_sclerosis_weights(), "multiple sclerosis", symptomWeights.max_score_multiple_sclerosis);
+            patient.calculateDiseaseScore(symptomWeights.getMyasthenia_gravis_weights(), "myasthenia gravis", symptomWeights.max_score_myasthenia_gravis);
+            patient.calculateDiseaseScore(symptomWeights.getParkinson_weights(), "parkinson", symptomWeights.max_score_parkinson);
 
             System.out.println(patient);
 

@@ -2,7 +2,7 @@ package diagnosis;
 
 public class Disease {
     private String name;
-    public int score;
+    public float score;
 
 
     public Disease(String name) {
@@ -19,11 +19,11 @@ public class Disease {
         this.name = name;
     }
 
-    public int getScore() {
+    public float getScore() {
         return score;
     }
 
-    public void setScore(int score) {
+    public void setScore(float score) {
         this.score = score;
     }
 

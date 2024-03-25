@@ -41,14 +41,16 @@ public class Patient {
         return diseases;
     }
 
-    public void calculateDiseaseScore(Map<String, Integer> disease_weights, String target_disease){
-        int score = 0;
+    public void calculateDiseaseScore(Map<String, Integer> disease_weights, String target_disease, int maxScoreDisease){
+        float score = 0;
         for (Symptom symptom : symptoms) {
             Integer weight = disease_weights.get(symptom.getName());
             if (weight != null) {
                 score += weight;
             }
         }
+        score = score / maxScoreDisease * 100;
+
         for (Disease disease : diseases) {
             if (disease.getName().equals(target_disease)) {
                 disease.setScore(score);

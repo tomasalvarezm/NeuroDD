@@ -5,18 +5,18 @@ unit PatientUnit;
 rule "Confirm Alzheimer"
     when
         $patient : /patients[$symptoms : symptoms]
-        $symptom : Symptom() from $symptoms
-        eval(
-            $symptom.getName() != "pain when flexing upper limb" &&
-            $symptom.getName() != "partial or complete paralysis" &&
-            $symptom.getName() != "incomplete voiding" &&
-            $symptom.getName() != "hiperesthesia" &&
-            $symptom.getName() != "increased urination" &&
-            $symptom.getName() != "optic neuritis" &&
-            $symptom.getName() != "seizures" &&
-            $symptom.getName() != "spasms" &&
-            ($symptom.getName() == "memory impairment" || $symptom.getName() == "orientation impairment")
-        )
+        $symptom : diagnosis.Symptom() from $symptoms
+        $patient.getSymptoms().contains(diagnosis.Symptom("spasms"));
+        $symptom.getName() != "pain when flexing upper limb" &&
+        $symptom.getName() != "partial or complete paralysis" &&
+        $symptom.getName() != "incomplete voiding" &&
+        $symptom.getName() != "hiperesthesia" &&
+        $symptom.getName() != "increased urination" &&
+        $symptom.getName() != "optic neuritis" &&
+        $symptom.getName() != "seizures" &&
+        $symptom.getName() != "spasms" &&
+        ($symptom.getName() == "memory impairment" || $symptom.getName() == "orientation impairment")
+
     then
         System.out.println("Alzheimer's disease is added to the list.");
         modify($patient){ addDisease(new Disease("alzheimer")) }

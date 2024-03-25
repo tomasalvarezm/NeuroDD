@@ -10,6 +10,12 @@ import org.apache.poi.ss.usermodel.*;
 
 
 public class SymptomWeights {
+    public final int max_score_alzheimer;
+    public final int max_score_amyotrophic_lateral_sclerosis;
+    public final int max_score_huntington;
+    public final int max_score_multiple_sclerosis;
+    public final int max_score_myasthenia_gravis;
+    public final int max_score_parkinson;
 
     private Map<String, Integer> alzheimer_weights;
     private Map<String, Integer> amyotrophic_lateral_sclerosis_weights;
@@ -62,12 +68,18 @@ public class SymptomWeights {
                         this.parkinson_weights = readingRows(ws,cellIterator);
                         break;
                 }
-                System.out.println("\n");
             }
             file.close();
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        this.max_score_alzheimer=calculateMaxScore(this.alzheimer_weights);
+        this.max_score_huntington=calculateMaxScore(this.huntington_weights);
+        this.max_score_amyotrophic_lateral_sclerosis=calculateMaxScore(this.amyotrophic_lateral_sclerosis_weights);
+        this.max_score_myasthenia_gravis=calculateMaxScore(this.myasthenia_gravis_weights);
+        this.max_score_parkinson=calculateMaxScore(this.parkinson_weights);
+        this.max_score_multiple_sclerosis=calculateMaxScore(this.multiple_sclerosis_weights);
     }
 
     public static Map<String, Integer> readingRows (XSSFSheet ws, Iterator<Cell> cellIterator) {
@@ -90,6 +102,14 @@ public class SymptomWeights {
             aux++;
         }
         return map;
+    }
+
+    private int calculateMaxScore (Map <String, Integer> disease_weights){
+        int maxScore=0;
+        for(int score: disease_weights.values()){
+            maxScore += score;
+        }
+        return maxScore;
     }
 
 
@@ -117,4 +137,6 @@ public class SymptomWeights {
     public Map<String, Integer> getParkinson_weights() {
         return parkinson_weights;
     }
+
+
 }
