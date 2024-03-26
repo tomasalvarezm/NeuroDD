@@ -25,6 +25,7 @@ public class Patient {
 
     public Patient(ArrayList<Symptom> symptoms) {
         this.symptoms = symptoms;
+        this.diseases = new ArrayList<>();
     }
 
     public void addSymptom(Symptom symptom){ this.symptoms.add(symptom); }

@@ -1,10 +1,11 @@
 package diagnosis;
-dialect  "java"
+
 
 unit PatientUnit;
 
 rule "Confirm Alzheimer"
     when
+        /*
         $patient : /patients[!symptoms.contains("pain when flexing upper limb") &&
                              !symptoms.contains("partial or complete paralysis") &&
                              !symptoms.contains("incomplete voiding") &&
@@ -15,9 +16,14 @@ rule "Confirm Alzheimer"
                              !symptoms.contains("spasms") &&
                              (symptoms.contains("memory impairment") || symptoms.contains("orientation impairment"))
                              ]
+                             */
+        $patient : /patients
+
     then
+        //modify($patient){ addDisease(new Disease("alzheimer")) }
+        $patient.addDisease(new Disease("alzheimer"));
         System.out.println("Alzheimer's disease is added to the list.");
-        modify($patient){ addDisease(new diagnosis.Disease("alzheimer")) }
+
 end
 
 /*rule "Confirm Alzheimer"
