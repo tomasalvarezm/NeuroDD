@@ -5,20 +5,16 @@ unit PatientUnit;
 
 rule "Confirm Alzheimer"
     when
-        $patient : /patients[$symptoms : symptoms]
-        $symptom : diagnosis.Symptom() from $symptoms
-        eval (
-            $symptom.getName() != "pain when flexing upper limb" &&
-            $symptom.getName() != "partial or complete paralysis" &&
-            $symptom.getName() != "incomplete voiding" &&
-            $symptom.getName() != "hiperesthesia" &&
-            $symptom.getName() != "increased urination" &&
-            $symptom.getName() != "optic neuritis" &&
-            $symptom.getName() != "seizures" &&
-            $symptom.getName() != "spasms" &&
-            ($symptom.getName() == "memory impairment" || $symptom.getName() == "orientation impairment")
-        )
-
+        $patient : /patients[!symptoms.contains("pain when flexing upper limb") &&
+                             !symptoms.contains("partial or complete paralysis") &&
+                             !symptoms.contains("incomplete voiding") &&
+                             !symptoms.contains("hiperesthesia") &&
+                             !symptoms.contains("increased urination") &&
+                             !symptoms.contains("optic neuritis") &&
+                             !symptoms.contains("seizures") &&
+                             !symptoms.contains("spasms") &&
+                             (symptoms.contains("memory impairment") || symptoms.contains("orientation impairment"))
+                             ]
     then
         System.out.println("Alzheimer's disease is added to the list.");
         modify($patient){ addDisease(new diagnosis.Disease("alzheimer")) }
