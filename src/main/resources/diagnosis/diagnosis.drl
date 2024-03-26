@@ -12,9 +12,7 @@ rule "Confirm Alzheimer"
                              !symptoms.contains(Symptom.INCREASED_URINATION) &&
                              !symptoms.contains(Symptom.OPTIC_NEURITIS) &&
                              !symptoms.contains(Symptom.SEIZURES) &&
-                             !symptoms.contains(Symptom.SPASMS) /*&&
-                             (symptoms.contains(Symptom.MEMORY_IMPAIRMENT) || symptoms.contains(Symptom.ORIENTATION_IMPAIRMENT))
-                             */]
+                             !symptoms.contains(Symptom.SPASMS)]
 
     then
         //modify($patient){ addDisease(new Disease("alzheimer")) }
@@ -30,10 +28,7 @@ rule "Confirm ALS"
                              !symptoms.contains(Symptom.CONSTIPATION) &&
                              !symptoms.contains(Symptom.INCREASED_URINATION) &&
                              !symptoms.contains(Symptom.PSYCHOSIS) &&
-                             !symptoms.contains(Symptom.OPTIC_NEURITIS) &&
-                             (symptoms.contains(Symptom.MUSCLE_WEAKNESS) ||
-                              symptoms.contains(Symptom.PARTIAL_OR_COMPLETE_PARALYSIS)||
-                              symptoms.contains(Symptom.INABILITY_TO_COMPLETELY_MOVE))
+                             !symptoms.contains(Symptom.OPTIC_NEURITIS)
                              ]
 
     then
@@ -49,8 +44,7 @@ rule "Confirm Huntington"
         $patient : /patients [!symptoms.contains(Symptom.OPTIC_NEURITIS) &&
                              !symptoms.contains(Symptom.PTOSIS) &&
                              !symptoms.contains(Symptom.CONSTIPATION) &&
-                             !symptoms.contains(Symptom.LOSS_OF_GAG_REFLEX) &&
-                             symptoms.contains(Symptom.INVOLVEMENT_OF_VOLUNTARY_SKELETAL_MUSCLES)
+                             !symptoms.contains(Symptom.LOSS_OF_GAG_REFLEX)
                              ]
 
     then
@@ -66,8 +60,7 @@ rule "Confirm MultipleSclerosis"
         $patient : /patients [!symptoms.contains(Symptom.RESPIRATORY_COMPROMISE_DURING_CRISIS) &&
                              !symptoms.contains(Symptom.INVOLVEMENT_OF_VOLUNTARY_SKELETAL_MUSCLES) &&
                              !symptoms.contains(Symptom.BENT_POSTURE) &&
-                             !symptoms.contains(Symptom.PAIN_WHEN_FLEXING_UPPER_LIMB) &&
-                             (symptoms.contains(Symptom.BLURRED_VISION) || symptoms.contains(Symptom.EMOTIONAL_INCONTINENCE))
+                             !symptoms.contains(Symptom.PAIN_WHEN_FLEXING_UPPER_LIMB)
                              ]
 
     then
@@ -84,8 +77,7 @@ rule "Confirm MyastheniaGravis"
                              !symptoms.contains(Symptom.INABILITY_TO_COMPLETELY_MOVE) &&
                              !symptoms.contains(Symptom.DELUSIONS) &&
                              !symptoms.contains(Symptom.HALLUCINATIONS) &&
-                             !symptoms.contains(Symptom.PSYCHOSIS) &&
-                             symptoms.contains(Symptom.MUSCLE_WEAKNESS)
+                             !symptoms.contains(Symptom.PSYCHOSIS)
                              ]
 
     then
@@ -102,8 +94,7 @@ rule "Confirm Parkinson"
         $patient : /patients [!symptoms.contains(Symptom.DIFFICULTY_BREATHING) &&
                              !symptoms.contains(Symptom.OPTIC_NEURITIS) &&
                              !symptoms.contains(Symptom.SEIZURES) &&
-                             !symptoms.contains(Symptom.INCREASED_URINATION) &&
-                             (symptoms.contains(Symptom.BRADYKINESIA) || symptoms.contains(Symptom.MUSCLE_STIFFNESS))
+                             !symptoms.contains(Symptom.INCREASED_URINATION)
                              ]
 
     then
