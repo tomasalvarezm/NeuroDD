@@ -266,7 +266,7 @@
                                                 <Font name="Times New Roman Bold" size="15.0" />
                                              </font>
                                           </Label>
-                                          <Label alignment="CENTER" text="0%                                              100%" textFill="WHITE" />
+                                          <Label alignment="CENTER" prefWidth="200.0" text="0%                                              100%" textFill="WHITE" />
                                           <ProgressBar fx:id="alzheimer_pbar" prefWidth="200.0" progress="0.0" />
                                           <ProgressBar fx:id="amyotrophic_pbar" prefWidth="200.0" progress="0.0" />
                                           <ProgressBar fx:id="huntington_pbar" prefWidth="200.0" progress="0.0" />

@@ -76,7 +76,7 @@ public class AppController implements Initializable {
                 sex = Sex.FEMALE;
             }
             fadeTransition.playFromStart();
-            patient = new Patient(dni_txt.getText(), name_txt.getText(), 18, date_picker.getValue(), sex);
+            patient = new Patient(dni_txt.getText(), name_txt.getText(), date_picker.getValue(), sex);
         }
     }
 
@@ -250,17 +250,6 @@ public class AppController implements Initializable {
             symptom_text += symptom.toString() + ",  ";
         }
         symptoms_lbl.setText(symptom_text);
-
-        /*for (Node node : probabilities_vbox.getChildren()){
-            Label lbl = (Label) node;
-            for (Disease disease : patient.getDiseases()){
-                if (lbl.getText().equals(disease.getName())){
-                    String probability = String.format("%.3f", disease.getScore());
-                    lbl.setText(probability + "%");
-
-                }
-            }
-        }*/
 
         for (Disease disease : patient.getDiseases()){
             if (disease.getName().equals("Alzheimer")){
