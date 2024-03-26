@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
@@ -201,7 +202,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab onSelectionChanged="#HideDiagnosisAlert" text="Diagnosis ">
+          <Tab onSelectionChanged="#handleDiagnosisTab" text="Diagnosis ">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -218,13 +219,64 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="symptoms_lbl" alignment="CENTER" prefHeight="99.0" prefWidth="557.0" textFill="WHITE" />
+                              <Label fx:id="symptoms_lbl" alignment="CENTER" contentDisplay="CENTER" prefHeight="99.0" prefWidth="557.0" textAlignment="CENTER" textFill="WHITE" />
                               <Label alignment="CENTER" prefHeight="30.0" prefWidth="161.0" text="DIAGNOSIS" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="diagnosis_lbl" alignment="CENTER" prefHeight="190.0" prefWidth="557.0" textFill="WHITE" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="210.0" spacing="7.0">
+                                       <children>
+                                          <Label alignment="CENTER" text="Disease" textAlignment="CENTER" textFill="#61bde1">
+                                             <font>
+                                                <Font name="Times New Roman Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" textFill="WHITE" />
+                                          <Label alignment="CENTER" text="Alzheimer" textFill="WHITE" />
+                                          <Label alignment="CENTER" text="Amyotrophic lateral sclerosis" textFill="WHITE" />
+                                          <Label alignment="CENTER" text="Huntington" textFill="WHITE" />
+                                          <Label alignment="CENTER" text="Multiple sclerosis" textFill="WHITE" />
+                                          <Label alignment="CENTER" text="Myasthenia gravis" textFill="WHITE" />
+                                          <Label alignment="CENTER" text="Parkinson" textFill="WHITE" />
+                                       </children>
+                                    </VBox>
+                                    <VBox fx:id="probabilities_vbox" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="210.0" spacing="7.0">
+                                       <children>
+                                          <Label alignment="CENTER" text="Probability" textAlignment="CENTER" textFill="#61bde1">
+                                             <font>
+                                                <Font name="Times New Roman Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" textFill="WHITE" />
+                                          <Label fx:id="alzheimer_prob" alignment="CENTER" text="0.0%" textFill="WHITE" />
+                                          <Label fx:id="amyotrophic_prob" alignment="CENTER" text="0.0%" textFill="WHITE" />
+                                          <Label fx:id="huntington_prob" alignment="CENTER" text="0.0%" textFill="WHITE" />
+                                          <Label fx:id="multiple_sclerosis_prob" alignment="CENTER" text="0.0%" textFill="WHITE" />
+                                          <Label fx:id="myasthenia_prob" alignment="CENTER" text="0.0%" textFill="WHITE" />
+                                          <Label fx:id="parkinson_prob" alignment="CENTER" text="0.0%" textFill="WHITE" />
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="210.0" spacing="7.0">
+                                       <children>
+                                          <Label alignment="CENTER" textAlignment="CENTER" textFill="#61bde1">
+                                             <font>
+                                                <Font name="Times New Roman Bold" size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER" text="0%                                              100%" textFill="WHITE" />
+                                          <ProgressBar fx:id="alzheimer_pbar" prefWidth="200.0" progress="0.0" />
+                                          <ProgressBar fx:id="amyotrophic_pbar" prefWidth="200.0" progress="0.0" />
+                                          <ProgressBar fx:id="huntington_pbar" prefWidth="200.0" progress="0.0" />
+                                          <ProgressBar fx:id="multiple_sclerosis_pbar" prefWidth="200.0" progress="0.0" />
+                                          <ProgressBar fx:id="myasthenia_pbar" prefWidth="200.0" progress="0.0" />
+                                          <ProgressBar fx:id="parkinson_pbar" prefWidth="200.0" progress="0.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
                            </children>
                         </VBox>
                      </children></AnchorPane>

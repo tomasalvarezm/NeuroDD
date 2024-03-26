@@ -24,8 +24,6 @@ import java.util.ResourceBundle;
 
 public class AppController implements Initializable {
 
-
-    public Patient patient;
     public Button diagnose_btn, save_info_btn;
     public CheckBox bentPosture, bradykinesia, difficultyBreathing, difficultySwallowing, diplopia;
     public CheckBox facialMovements, hypomimia, inabilityToMove, involvementVoluntarySkeletalMuscles;
@@ -40,11 +38,17 @@ public class AppController implements Initializable {
     public CheckBox hyperreflexia, increasedUrination, lossGagReflex, opticNeuritis;
     public CheckBox respiratoryCompromise, seizures, spasms, urinaryIncontinence, weightLoss;
     public TextField searchTextMotor, searchTextCognitive, searchTextPsychiatric, searchTextOthers;
-    public Label diagnosisMessageAlert, patient_info_lbl, symptoms_lbl, diagnosis_lbl;
+    public Label diagnosisMessageAlert, patient_info_lbl, symptoms_lbl;
     public TextField dni_txt, name_txt;
     public ChoiceBox sex_box;
     public DatePicker date_picker;
     public ImageView ok_img;
+    public VBox probabilities_vbox;
+    public Label alzheimer_prob, amyotrophic_prob, huntington_prob;
+    public Label multiple_sclerosis_prob, myasthenia_prob, parkinson_prob;
+    public ProgressBar alzheimer_pbar, amyotrophic_pbar, huntington_pbar;
+    public ProgressBar multiple_sclerosis_pbar, myasthenia_pbar, parkinson_pbar;
+    public Patient patient;
     PatientUnit patientUnit;
     RuleUnitInstance<PatientUnit> instance;
 
@@ -93,6 +97,7 @@ public class AppController implements Initializable {
 
             for (CheckBox checkBox : allCheckBoxes){
                 if (checkBox.isSelected()){
+                    // Poner el texto en el formato adecuado para el enum Symptom
                     String input = checkBox.getText();
                     if (input.contains("(") && input.contains(")")) {
                         // Eliminar los paréntesis y su contenido
@@ -103,7 +108,6 @@ public class AppController implements Initializable {
                     }
                     Symptom symptom = Symptom.valueOf(input.replace(" ","_").toUpperCase());
                     patient.addSymptom(symptom);
-
                 }
             }
             patientUnit.getPatients().add(patient);
@@ -120,7 +124,7 @@ public class AppController implements Initializable {
             patient.calculateDiseaseScore(symptomWeights.getMyasthenia_gravis_weights(), "Myasthenia gravis", symptomWeights.max_score_myasthenia_gravis);
             patient.calculateDiseaseScore(symptomWeights.getParkinson_weights(), "Parkinson", symptomWeights.max_score_parkinson);
 
-            System.out.println(patient);
+//            System.out.println(patient);
 
             diagnosisMessageAlert.setVisible(true);
         }
@@ -237,23 +241,28 @@ public class AppController implements Initializable {
 
     }
 
-    public void HideDiagnosisAlert(Event event) {
+    public void handleDiagnosisTab(Event event) {
         diagnosisMessageAlert.setVisible(false);
         patient_info_lbl.setText(patient.toString());
+
         String symptom_text = "";
         for (Symptom symptom : patient.getSymptoms()) {
-            symptom_text += symptom.toString() + ", ";
+            symptom_text += symptom.toString() + ",  ";
         }
         symptoms_lbl.setText(symptom_text);
-        symptoms_lbl.setWrapText(true);
 
-        String diagnosis_text = "";
-        for (Disease disease : patient.getDiseases()){
-            diagnosis_text += disease.getName() + ".\t" + "Probability: " + disease.getScore() + "\n";
+        for (Node node : probabilities_vbox.getChildren()){
+            Label lbl = (Label) node;
+            for (Disease disease : patient.getDiseases()){
+                if (lbl.getText().equals(disease.getName())){
+                    String probability = String.format("%.3f", disease.getScore());
+                    lbl.setText(probability + "%");
+                }
+            }
         }
-        diagnosis_lbl.setText(diagnosis_text);
-        diagnosis_lbl.setWrapText(true);
 
+        patient_info_lbl.setWrapText(true);
+        symptoms_lbl.setWrapText(true);
     }
 
     @Override
