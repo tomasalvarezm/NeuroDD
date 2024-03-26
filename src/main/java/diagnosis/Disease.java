@@ -31,10 +31,7 @@ public class Disease {
 
     @Override
     public String toString() {
-        return "Disease{" +
-                "name='" + name + '\'' +
-                ", index_disease=" + score +
-                '}';
+        return name + "probability : " + score + "%\n";
     }
 
     @Override

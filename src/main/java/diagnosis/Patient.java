@@ -10,8 +10,8 @@ public class Patient {
     private int age;
     private LocalDate dob;
     private Sex sex;
-    public ArrayList<Disease> diseases;
     public ArrayList<Symptom> symptoms;
+    public ArrayList<Disease> diseases;
 
     public Patient(String id, String name, int age, LocalDate dob, Sex sex) {
         this.id = id;
@@ -19,30 +19,22 @@ public class Patient {
         this.age = age;
         this.dob = dob;
         this.sex = sex;
-        this.diseases = new ArrayList<>();
         this.symptoms = new ArrayList<>();
-
+        this.diseases = new ArrayList<>();
     }
 
     public Patient(ArrayList<Symptom> symptoms) {
-        this.diseases = new ArrayList<>();
         this.symptoms = symptoms;
-
+        this.diseases = new ArrayList<>();
     }
 
     public void addSymptom(Symptom symptom){ this.symptoms.add(symptom); }
 
-    public void addDisease(Disease disease){
-        this.diseases.add(disease);
-    }
+    public void addDisease(Disease disease){ this.diseases.add(disease); }
 
-    public ArrayList<Symptom> getSymptoms() {
-        return symptoms;
-    }
+    public ArrayList<Symptom> getSymptoms() { return symptoms; }
 
-    public ArrayList<Disease> getDiseases() {
-        return diseases;
-    }
+    public ArrayList<Disease> getDiseases() { return diseases; }
 
     public void calculateDiseaseScore(Map<Symptom, Integer> disease_weights, String target_disease, int maxScoreDisease){
         float score = 0;
@@ -62,17 +54,15 @@ public class Patient {
         }
     }
 
-
     @Override
     public String toString() {
-        return "Patient{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", dob=" + dob +
-                ", sex=" + sex +
-                ", symptoms=" + symptoms +
-                ", diseases=" + diseases +
-                '}';
+        return "Patient \n" +
+                "DNI : " + id + '\n' +
+                "Name : " + name + '\n' +
+                "Age : " + age + '\n' +
+                "Date of birth : " + dob + '\n' +
+                "Sex : " + sex + '\n' + '\n' +
+                "Symptoms \n" + symptoms + '\n' +
+                "Diseases \n" + diseases;
     }
 }

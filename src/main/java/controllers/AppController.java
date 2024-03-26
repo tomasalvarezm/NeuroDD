@@ -40,7 +40,7 @@ public class AppController implements Initializable {
     public CheckBox hyperreflexia, increasedUrination, lossGagReflex, opticNeuritis;
     public CheckBox respiratoryCompromise, seizures, spasms, urinaryIncontinence, weightLoss;
     public TextField searchTextMotor, searchTextCognitive, searchTextPsychiatric, searchTextOthers;
-    public Label lbl, diagnosisMessageAlert;
+    public Label diagnosis_lbl, diagnosisMessageAlert;
     public TextField dni_txt, name_txt;
     public ChoiceBox sex_box;
     public DatePicker date_picker;
@@ -239,6 +239,7 @@ public class AppController implements Initializable {
 
     public void HideDiagnosisAlert(Event event) {
         diagnosisMessageAlert.setVisible(false);
+        diagnosis_lbl.setText(patient.toString());
     }
 
     @Override
