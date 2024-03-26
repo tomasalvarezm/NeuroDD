@@ -251,13 +251,42 @@ public class AppController implements Initializable {
         }
         symptoms_lbl.setText(symptom_text);
 
-        for (Node node : probabilities_vbox.getChildren()){
+        /*for (Node node : probabilities_vbox.getChildren()){
             Label lbl = (Label) node;
             for (Disease disease : patient.getDiseases()){
                 if (lbl.getText().equals(disease.getName())){
                     String probability = String.format("%.3f", disease.getScore());
                     lbl.setText(probability + "%");
+
                 }
+            }
+        }*/
+
+        for (Disease disease : patient.getDiseases()){
+            if (disease.getName().equals("Alzheimer")){
+                String probability = String.format("%.3f", disease.getScore());
+                alzheimer_prob.setText(probability + "%");
+                alzheimer_pbar.setProgress(disease.getScore()/100);
+            } else if (disease.getName().equals("Amyotrophic lateral sclerosis")) {
+                String probability = String.format("%.3f", disease.getScore());
+                amyotrophic_prob.setText(probability + "%");
+                amyotrophic_pbar.setProgress(disease.getScore()/100);
+            } else if (disease.getName().equals("Huntington")) {
+                String probability = String.format("%.3f", disease.getScore());
+                huntington_prob.setText(probability + "%");
+                huntington_pbar.setProgress(disease.getScore()/100);
+            } else if (disease.getName().equals("Multiple sclerosis")) {
+                String probability = String.format("%.3f", disease.getScore());
+                multiple_sclerosis_prob.setText(probability + "%");
+                multiple_sclerosis_pbar.setProgress(disease.getScore()/100);
+            } else if (disease.getName().equals("Myasthenia gravis")) {
+                String probability = String.format("%.3f", disease.getScore());
+                myasthenia_prob.setText(probability + "%");
+                myasthenia_pbar.setProgress(disease.getScore()/100);
+            } else if (disease.getName().equals("Parkinson")) {
+                String probability = String.format("%.3f", disease.getScore());
+                parkinson_prob.setText(probability + "%");
+                parkinson_pbar.setProgress(disease.getScore()/100);
             }
         }
 
