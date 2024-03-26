@@ -93,8 +93,16 @@ public class AppController implements Initializable {
 
             for (CheckBox checkBox : allCheckBoxes){
                 if (checkBox.isSelected()){
-                    Symptom symptom = new Symptom(checkBox.getText().toLowerCase().trim());
-                    patient.addSymptom(symptom);
+                    String input=checkBox.getText();
+                    //Symptom symptom = new Symptom(checkBox.getText().toLowerCase().trim());
+                    if (input.contains("(") && input.contains(")")) {
+                        // Eliminar los paréntesis y su contenido
+                        input = input.replaceAll("\\(.*?\\)", "").trim();
+                        System.out.println(input);
+                    }
+                    Prueba symptom = Prueba.valueOf(input.replace(" ","_").toUpperCase());
+                    patient.addPrueba(symptom);
+
                 }
             }
 

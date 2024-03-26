@@ -17,12 +17,12 @@ public class SymptomWeights {
     public final int max_score_myasthenia_gravis;
     public final int max_score_parkinson;
 
-    private Map<String, Integer> alzheimer_weights;
-    private Map<String, Integer> amyotrophic_lateral_sclerosis_weights;
-    private Map<String, Integer> huntington_weights;
-    private Map<String, Integer> multiple_sclerosis_weights;
-    private Map<String, Integer> myasthenia_gravis_weights;
-    private Map<String, Integer> parkinson_weights;
+    private Map<Prueba, Integer> alzheimer_weights;
+    private Map<Prueba, Integer> amyotrophic_lateral_sclerosis_weights;
+    private Map<Prueba, Integer> huntington_weights;
+    private Map<Prueba, Integer> multiple_sclerosis_weights;
+    private Map<Prueba, Integer> myasthenia_gravis_weights;
+    private Map<Prueba, Integer> parkinson_weights;
 
     public SymptomWeights(String pathname) {
         try {
@@ -82,9 +82,9 @@ public class SymptomWeights {
         this.max_score_multiple_sclerosis=calculateMaxScore(this.multiple_sclerosis_weights);
     }
 
-    public static Map<String, Integer> readingRows (XSSFSheet ws, Iterator<Cell> cellIterator) {
+    public static Map<Prueba, Integer> readingRows (XSSFSheet ws, Iterator<Cell> cellIterator) {
         int aux = 1;
-        Map<String, Integer> map = new HashMap<>();
+        Map<Prueba, Integer> map = new HashMap<>();
         Cell start;
         int init_pos = 1;
         for (int i = 0; i < init_pos && cellIterator.hasNext(); i++) {
@@ -95,16 +95,22 @@ public class SymptomWeights {
 
             // La primera celda la cojo en texto y el resto en número
             Integer weight_value = (int) start.getNumericCellValue();
-            String symptom_name = ws.getRow(2).getCell(aux).getStringCellValue();
 
+            String symptom_name = ws.getRow(2).getCell(aux).getStringCellValue();
+            if (symptom_name.contains("(") && symptom_name.contains(")")) {
+                // Eliminar los paréntesis y su contenido
+                symptom_name = symptom_name.replaceAll("\\(.*?\\)", "").trim();
+                System.out.println(symptom_name);
+            }
+            Prueba symptom = Prueba.valueOf(symptom_name.replace(" ","_").toUpperCase());
             // Agregar el síntoma y su peso al mapa
-            map.put(symptom_name, weight_value);
+            map.put(symptom, weight_value);
             aux++;
         }
         return map;
     }
 
-    private int calculateMaxScore (Map <String, Integer> disease_weights){
+    private int calculateMaxScore (Map <Prueba, Integer> disease_weights){
         int maxScore=0;
         for(int score: disease_weights.values()){
             maxScore += score;
@@ -114,27 +120,27 @@ public class SymptomWeights {
 
 
 
-    public Map<String, Integer> getAlzheimer_weights() {
+    public Map<Prueba, Integer> getAlzheimer_weights() {
         return alzheimer_weights;
     }
 
-    public Map<String, Integer> getAmyotrophic_lateral_sclerosis_weights() {
+    public Map<Prueba, Integer> getAmyotrophic_lateral_sclerosis_weights() {
         return amyotrophic_lateral_sclerosis_weights;
     }
 
-    public Map<String, Integer> getHuntington_weights() {
+    public Map<Prueba, Integer> getHuntington_weights() {
         return huntington_weights;
     }
 
-    public Map<String, Integer> getMultiple_sclerosis_weights() {
+    public Map<Prueba, Integer> getMultiple_sclerosis_weights() {
         return multiple_sclerosis_weights;
     }
 
-    public Map<String, Integer> getMyasthenia_gravis_weights() {
+    public Map<Prueba, Integer> getMyasthenia_gravis_weights() {
         return myasthenia_gravis_weights;
     }
 
-    public Map<String, Integer> getParkinson_weights() {
+    public Map<Prueba, Integer> getParkinson_weights() {
         return parkinson_weights;
     }
 

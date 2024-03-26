@@ -17,7 +17,7 @@ rule "Confirm Alzheimer"
                              (symptoms.contains("memory impairment") || symptoms.contains("orientation impairment"))
                              ]
                              */
-        $patient : /patients
+        $patient : /patients [pruebas.contains(Prueba.TREMOR)]
 
     then
         //modify($patient){ addDisease(new Disease("alzheimer")) }
