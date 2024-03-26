@@ -174,7 +174,6 @@
                                  <children>
                                     <CheckBox fx:id="blurredVision" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Blurred vision" textFill="WHITE" />
                                     <CheckBox fx:id="constipation" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Constipation" textFill="WHITE" />
-                                    <CheckBox fx:id="delirium" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Delirium" textFill="WHITE" />
                                     <CheckBox fx:id="difficultyBreathing" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Difficulty breathing" textFill="WHITE" />
                                     <CheckBox fx:id="difficultySwallowing" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Difficulty swallowing" textFill="WHITE" />
                                     <CheckBox fx:id="diplopia" alignment="CENTER_RIGHT" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="17.0" prefWidth="250.0" text="Diplopia" textFill="WHITE" />

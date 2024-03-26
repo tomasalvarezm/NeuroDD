@@ -239,7 +239,9 @@ public class AppController implements Initializable {
 
     public void HideDiagnosisAlert(Event event) {
         diagnosisMessageAlert.setVisible(false);
-        diagnosis_lbl.setText(patient.toString());
+        diagnosis_lbl.setText(this.patient.toString());
+        diagnosis_lbl.setWrapText(true);
+
     }
 
     @Override

@@ -31,7 +31,7 @@ public class Disease {
 
     @Override
     public String toString() {
-        return name + "probability : " + score + "%\n";
+        return name + " probability : " + score + "%\n";
     }
 
     @Override
