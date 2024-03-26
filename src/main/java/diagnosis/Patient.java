@@ -10,10 +10,8 @@ public class Patient {
     private int age;
     private LocalDate dob;
     private Sex sex;
-    public ArrayList<Symptom> symptoms;
     public ArrayList<Disease> diseases;
-
-    public ArrayList<Prueba> pruebas;
+    public ArrayList<Symptom> symptoms;
 
     public Patient(String id, String name, int age, LocalDate dob, Sex sex) {
         this.id = id;
@@ -21,25 +19,18 @@ public class Patient {
         this.age = age;
         this.dob = dob;
         this.sex = sex;
-        this.symptoms = new ArrayList<>();
         this.diseases = new ArrayList<>();
-        this.pruebas = new ArrayList<>();
+        this.symptoms = new ArrayList<>();
 
     }
 
-    public Patient(ArrayList<Symptom> symptoms, Prueba p) {
-        this.symptoms = symptoms;
+    public Patient(ArrayList<Symptom> symptoms) {
         this.diseases = new ArrayList<>();
-        this.pruebas = new ArrayList<>();
-        this.pruebas.add(p);
+        this.symptoms = symptoms;
 
     }
 
     public void addSymptom(Symptom symptom){ this.symptoms.add(symptom); }
-
-    public void addPrueba (Prueba p){
-        this.pruebas.add(p);
-    }
 
     public void addDisease(Disease disease){
         this.diseases.add(disease);
@@ -49,21 +40,13 @@ public class Patient {
         return symptoms;
     }
 
-    public ArrayList<Prueba> getPruebas() {
-        return pruebas;
-    }
-
-    public void setPruebas(ArrayList<Prueba> pruebas) {
-        this.pruebas = pruebas;
-    }
-
     public ArrayList<Disease> getDiseases() {
         return diseases;
     }
 
-    public void calculateDiseaseScore(Map<Prueba, Integer> disease_weights, String target_disease, int maxScoreDisease){
+    public void calculateDiseaseScore(Map<Symptom, Integer> disease_weights, String target_disease, int maxScoreDisease){
         float score = 0;
-        for (Prueba symptom : pruebas) {
+        for (Symptom symptom : symptoms) {
             Integer weight = disease_weights.get(symptom);
             if (weight != null) {
                 score += weight;
@@ -78,7 +61,6 @@ public class Patient {
             }
         }
     }
-
 
 
     @Override

@@ -1,23 +1,20 @@
 package diagnosis;
 
-
 unit PatientUnit;
 
 rule "Confirm Alzheimer"
     when
-        /*
-        $patient : /patients[!symptoms.contains("pain when flexing upper limb") &&
-                             !symptoms.contains("partial or complete paralysis") &&
-                             !symptoms.contains("incomplete voiding") &&
-                             !symptoms.contains("hiperesthesia") &&
-                             !symptoms.contains("increased urination") &&
-                             !symptoms.contains("optic neuritis") &&
-                             !symptoms.contains("seizures") &&
-                             !symptoms.contains("spasms") &&
-                             (symptoms.contains("memory impairment") || symptoms.contains("orientation impairment"))
-                             ]
-                             */
-        $patient : /patients [pruebas.contains(Prueba.TREMOR)]
+
+        $patient : /patients [!symptoms.contains(Symptom.PAIN_WHEN_FLEXING_UPPER_LIMB) &&
+                             !symptoms.contains(Symptom.PARTIAL_OR_COMPLETE_PARALYSIS) &&
+                             !symptoms.contains(Symptom.INCOMPLETE_VOIDING) &&
+                             !symptoms.contains(Symptom.HYPERESTHESIA) &&
+                             !symptoms.contains(Symptom.INCREASED_URINATION) &&
+                             !symptoms.contains(Symptom.OPTIC_NEURITIS) &&
+                             !symptoms.contains(Symptom.SEIZURES) &&
+                             !symptoms.contains(Symptom.SPASMS) /*&&
+                             (symptoms.contains(Symptom.MEMORY_IMPAIRMENT) || symptoms.contains(Symptom.ORIENTATION_IMPAIRMENT))
+                             */]
 
     then
         //modify($patient){ addDisease(new Disease("alzheimer")) }
@@ -26,158 +23,95 @@ rule "Confirm Alzheimer"
 
 end
 
-/*rule "Confirm Alzheimer"
-    when
-        $patient : /patients[$symptoms : symptoms]
-        $symptom : diagnosis.Symptom() from $symptoms
-        $patient.getSymptoms().contains(diagnosis.Symptom("spasms"));
-        $symptom.getName() != "pain when flexing upper limb" &&
-        $symptom.getName() != "partial or complete paralysis" &&
-        $symptom.getName() != "incomplete voiding" &&
-        $symptom.getName() != "hiperesthesia" &&
-        $symptom.getName() != "increased urination" &&
-        $symptom.getName() != "optic neuritis" &&
-        $symptom.getName() != "seizures" &&
-        $symptom.getName() != "spasms" &&
-        ($symptom.getName() == "memory impairment" || $symptom.getName() == "orientation impairment")
-
-    then
-        System.out.println("Alzheimer's disease is added to the list.");
-        modify($patient){ addDisease(new Disease("alzheimer")) }
-end*/
-
-/*rule "Confirm Alzheimer"
-    when
-        $patient : Patient($symptoms : symptoms)
-         // Iterar sobre cada síntoma en la lista
-        $symptom : Symptom() from $symptoms
-        eval(
-            Symptom(name != "pain when flexing upper limb") &&
-            Symptom(name != "partial or complete paralysis") &&
-            Symptom(name != "incomplete voiding") &&
-            Symptom(name != "hiperesthesia") &&
-            Symptom(name != "increased urination") &&
-            Symptom(name != "optic neuritis") &&
-            Symptom(name != "seizures") &&
-            Symptom(name != "spasms") &&
-            (Symptom(name == "memory impairment") ||
-            Symptom(name == "orientation impairment"))
-        )
-
-    then
-      //TODO ver si esto es correcto
-        System.out.println("Alzheimer's disease is added to the list.");
-        //insert(new Disease("alzheimer"));
-        //$patient.addDisease(new Disease("alzheimer"));
-        modify($patient){ addDisease(new Disease("alzheimer")) }
-end
-
 rule "Confirm ALS"
     when
-        $patient : Patient($symptoms : symptoms)
 
-        // Iterar sobre cada síntoma en la lista
-        $symptom : Symptom() from $symptoms
-        eval(
-            Symptom(name != "blurred_vision") &&
-            Symptom(name != "constipation") &&
-            Symptom(name != "increased urination") &&
-            Symptom(name != "psicosis") &&
-            Symptom(name != "optic neuritis") &&
-            (Symptom(name == "muscle weakness") ||
-             Symptom(name == "partial or complete paralysis") ||
-             Symptom(name == "inability to completely move")
-             )
-        )
+        $patient : /patients [!symptoms.contains(Symptom.BLURRED_VISION) &&
+                             !symptoms.contains(Symptom.CONSTIPATION) &&
+                             !symptoms.contains(Symptom.INCREASED_URINATION) &&
+                             !symptoms.contains(Symptom.PSYCHOSIS) &&
+                             !symptoms.contains(Symptom.OPTIC_NEURITIS) &&
+                             (symptoms.contains(Symptom.MUSCLE_WEAKNESS) ||
+                              symptoms.contains(Symptom.PARTIAL_OR_COMPLETE_PARALYSIS)||
+                              symptoms.contains(Symptom.INABILITY_TO_COMPLETELY_MOVE))
+                             ]
 
     then
-        //TODO descartar la enfermedad de Amyotrophic
-        System.out.println("Amyotrophic lateral sclerosis (ALS) is added.");
-        //insert(new Disease("amyotrophicLateralSclerosis"));
-        modify($patient){ addDisease(new Disease("amyotrophicLateralSclerosis")) }
+        //modify($patient){ addDisease(new Disease("amyotrophic lateral sclerosis")) }
+        $patient.addDisease(new Disease("amyotrophic lateral sclerosis"));
+        System.out.println("Amyotrophic Lateral Sclerosis's disease is added to the list.");
+
 end
 
 rule "Confirm Huntington"
     when
-         $patient : Patient($symptoms : symptoms)
 
-         // Iterar sobre cada síntoma en la lista
-        $symptom : Symptom() from $symptoms
-        eval(
-            Symptom(name != "optic neuritis") &&
-            Symptom(name != "ptosis") &&
-            Symptom(name != "constipation") &&
-            Symptom(name != "loss of gag reflex") &&
-            (Symptom(name == "involvement of voluntary skeletal muscles"))
-            )
+        $patient : /patients [!symptoms.contains(Symptom.OPTIC_NEURITIS) &&
+                             !symptoms.contains(Symptom.PTOSIS) &&
+                             !symptoms.contains(Symptom.CONSTIPATION) &&
+                             !symptoms.contains(Symptom.LOSS_OF_GAG_REFLEX) &&
+                             symptoms.contains(Symptom.INVOLVEMENT_OF_VOLUNTARY_SKELETAL_MUSCLES)
+                             ]
+
     then
-        //TODO descartar la enfermedad de Huntington
-        System.out.println("Huntington’s disease is added.");
-        //insert(new Disease("huntington"));
-        modify($patient){ addDisease(new Disease("huntington")) }
+        //modify($patient){ addDisease(new Disease("huntington")) }
+        $patient.addDisease(new Disease("huntington"));
+        System.out.println("Huntington's disease is added to the list.");
+
 end
 
 rule "Confirm MultipleSclerosis"
     when
-        $patient : Patient($symptoms : symptoms)
 
-        // Iterar sobre cada síntoma en la lista
-        $symptom : Symptom() from $symptoms
-         eval(
-              Symptom(name != "respiratory compromise during crisis") &&
-              Symptom(name != "involvement of voluntary skeletal muscles") &&
-              Symptom(name != "bent posture") &&
-              Symptom(name != "pain when flexing upper limb") &&
-              (Symptom(name == "blurred vision")||Symptom(name == "emotional incontinence"))
-              )
+        $patient : /patients [!symptoms.contains(Symptom.RESPIRATORY_COMPROMISE_DURING_CRISIS) &&
+                             !symptoms.contains(Symptom.INVOLVEMENT_OF_VOLUNTARY_SKELETAL_MUSCLES) &&
+                             !symptoms.contains(Symptom.BENT_POSTURE) &&
+                             !symptoms.contains(Symptom.PAIN_WHEN_FLEXING_UPPER_LIMB) &&
+                             (symptoms.contains(Symptom.BLURRED_VISION) || symptoms.contains(Symptom.EMOTIONAL_INCONTINENCE))
+                             ]
+
     then
-        //TODO descartar la enfermedad de Multiple Sclerosis
-        System.out.println("Multiple sclerosis is added.");
-        //insert(new Disease("multipleSclerosis"));
-        modify($patient){ addDisease(new Disease("multipleSclerosis")) }
+        //modify($patient){ addDisease(new Disease("multiple sclerosis")) }
+        $patient.addDisease(new Disease("multiple sclerosis"));
+        System.out.println("Multiple Sclerosis's disease is added to the list.");
+
 end
 
 rule "Confirm MyastheniaGravis"
     when
-        $patient : Patient($symptoms : symptoms)
-        // Iterar sobre cada síntoma en la lista
-        $symptom : Symptom() from $symptoms
-        eval(
-            Symptom(name != "tremor") &&
-            Symptom(name != "inability to completely move") &&
-            Symptom(name != "delusions") &&
-            Symptom(name != "hallucinations") &&
-            Symptom(name != "psicosis") &&
-            (Symptom(name == "muscle weakness"))
-         )
+
+        $patient : /patients [!symptoms.contains(Symptom.TREMOR) &&
+                             !symptoms.contains(Symptom.INABILITY_TO_COMPLETELY_MOVE) &&
+                             !symptoms.contains(Symptom.DELUSIONS) &&
+                             !symptoms.contains(Symptom.HALLUCINATIONS) &&
+                             !symptoms.contains(Symptom.PSYCHOSIS) &&
+                             symptoms.contains(Symptom.MUSCLE_WEAKNESS)
+                             ]
+
     then
-        //TODO descartar la enfermedad de Myasthenia gravis
-        System.out.println("Myasthenia gravis is added.");
-        //insert(new Disease("myastheniaGravis"));
-        modify($patient){ addDisease(new Disease("myastheniaGravis")) }
+        //modify($patient){ addDisease(new Disease("myasthenia gravis")) }
+        $patient.addDisease(new Disease("myasthenia gravis"));
+        System.out.println("Myasthenia Gravis' disease is added to the list.");
+
 end
+
 
 rule "Confirm Parkinson"
     when
-        $patient : Patient($symptoms : symptoms)
-        // Iterar sobre cada síntoma en la lista
-        $symptom : Symptom() from $symptoms
 
-        eval(
-                    Symptom(name != "difficulty breathing") &&
-                    Symptom(name != "increased urination") &&
-                    Symptom(name != "optic neuritis") &&
-                    Symptom(name != "seizures") &&
-                    (Symptom(name == "bradykinesia") ||
-                     Symptom(name == "muscle stiffness"))
-                 )
+        $patient : /patients [!symptoms.contains(Symptom.DIFFICULTY_BREATHING) &&
+                             !symptoms.contains(Symptom.OPTIC_NEURITIS) &&
+                             !symptoms.contains(Symptom.SEIZURES) &&
+                             !symptoms.contains(Symptom.INCREASED_URINATION) &&
+                             (symptoms.contains(Symptom.BRADYKINESIA) || symptoms.contains(Symptom.MUSCLE_STIFFNESS))
+                             ]
+
     then
-        //TODO descartar la enfermedad de Parkinson
-        System.out.println("Parkinson’s disease is added.");
-        //insert(new Disease("parkinson"));
-        modify($patient){ addDisease(new Disease("parkinson")) }
-end*/
+        //modify($patient){ addDisease(new Disease("parkinson")) }
+        $patient.addDisease(new Disease("parkinson"));
+        System.out.println("Parkinson's disease is added to the list.");
 
+end
 
 
 

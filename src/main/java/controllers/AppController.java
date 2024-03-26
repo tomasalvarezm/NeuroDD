@@ -10,7 +10,10 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
+import org.drools.ruleunits.api.RuleUnitInstance;
+import org.drools.ruleunits.api.RuleUnitProvider;
 //import org.kie.api.KieServices;
 //import org.kie.api.runtime.KieContainer;
 
@@ -42,6 +45,8 @@ public class AppController implements Initializable {
     public ChoiceBox sex_box;
     public DatePicker date_picker;
     public ImageView ok_img;
+    PatientUnit patientUnit;
+    RuleUnitInstance<PatientUnit> instance;
 
 
     public void handleButtonSaveInfo(ActionEvent actionEvent) {
@@ -80,11 +85,6 @@ public class AppController implements Initializable {
             alert.setContentText("Introduced patient data first");
             alert.showAndWait();
         } else {
-
-//            KieServices ks = KieServices.Factory.get();
-//            KieContainer kc = ks.getKieClasspathContainer();
-//            KieSession ksession = kc.newKieSession("NAME OF THE KSESSION IN KMODULE");
-
             ArrayList<CheckBox> allCheckBoxes = new ArrayList<>();
             allCheckBoxes.addAll(getCheckBoxes(searchTextMotor, 2));
             allCheckBoxes.addAll(getCheckBoxes(searchTextCognitive, 5));
@@ -93,35 +93,25 @@ public class AppController implements Initializable {
 
             for (CheckBox checkBox : allCheckBoxes){
                 if (checkBox.isSelected()){
-                    String input=checkBox.getText();
-                    //Symptom symptom = new Symptom(checkBox.getText().toLowerCase().trim());
+                    String input = checkBox.getText();
                     if (input.contains("(") && input.contains(")")) {
                         // Eliminar los paréntesis y su contenido
                         input = input.replaceAll("\\(.*?\\)", "").trim();
-                        System.out.println(input);
                     }
-                    Prueba symptom = Prueba.valueOf(input.replace(" ","_").toUpperCase());
-                    patient.addPrueba(symptom);
+                    if (input.contains(",")){
+                        input = input.replace(",", "");
+                    }
+                    Symptom symptom = Symptom.valueOf(input.replace(" ","_").toUpperCase());
+                    patient.addSymptom(symptom);
 
                 }
             }
+            patientUnit.getPatients().add(patient);
 
-            // ksession.insert(patient);
-
-            // ksession.fireAllRules();
-            // ksession.dispose();
+            instance.fire();
 
             String pathname = "../NeuroDD/src/main/resources/symptom_weights/Symptoms_DSS.xlsx";
             SymptomWeights symptomWeights = new SymptomWeights(pathname);
-//        System.out.println(symptomWeights.getAlzheimer_weights());
-//        System.out.println(symptomWeights.getHuntington_weights());
-//        System.out.println(symptomWeights.getAmyotrophic_lateral_sclerosis_weights());
-//        System.out.println(symptomWeights.getMyasthenia_gravis_weights());
-//        System.out.println(symptomWeights.getMultiple_sclerosis_weights());
-//        System.out.println(symptomWeights.getParkinson_weights());
-
-            Disease alzheimer= new Disease("alzheimer");
-            patient.addDisease(alzheimer);
 
             patient.calculateDiseaseScore(symptomWeights.getAlzheimer_weights(), "alzheimer", symptomWeights.max_score_alzheimer);
             patient.calculateDiseaseScore(symptomWeights.getAmyotrophic_lateral_sclerosis_weights(), "amyotrophic lateral sclerosis", symptomWeights.max_score_amyotrophic_lateral_sclerosis);
@@ -255,6 +245,16 @@ public class AppController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         sex_box.getItems().addAll("Male", "Female");
         sex_box.setValue("Male");
+        patientUnit = new PatientUnit();
+        instance = RuleUnitProvider.get().createRuleUnitInstance(patientUnit);
+
     }
 
+    public void handleClose(WindowEvent event) {
+        if (instance != null) {
+            System.out.println("cerrando instance");
+            instance.close();
+            System.out.println("instance cerrada");
+        }
+    }
 }

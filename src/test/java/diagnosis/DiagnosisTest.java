@@ -32,11 +32,11 @@ public class DiagnosisTest {
         try {
 
             ArrayList<Symptom> alzheimerSymptoms= new ArrayList<Symptom>();
-            alzheimerSymptoms.add(new Symptom("memory_impairment"));
-            alzheimerSymptoms.add(new Symptom("orientation_impairment"));
+            alzheimerSymptoms.add(Symptom.MEMORY_IMPAIRMENT);
+            alzheimerSymptoms.add(Symptom.ORIENTATION_IMPAIRMENT);
 
             //Creamos un paciente con los sintomas
-            Patient alzheimerPatient = new Patient(alzheimerSymptoms,Prueba.TREMOR);
+            Patient alzheimerPatient = new Patient(alzheimerSymptoms);
             Disease alzheimer = new Disease("alzheimer");
 
             patientUnit.getPatients().add(alzheimerPatient);
@@ -48,14 +48,14 @@ public class DiagnosisTest {
             instance.close();
         }
     }
-/*
+
     @Test
     public void testAmyotrophicLateralSclerosis(){
         try{
-            ArrayList<Symptom> alsSymptoms = new ArrayList<>();
-            alsSymptoms.add(new Symptom("muscle_weakness"));
-            alsSymptoms.add(new Symptom("partial_or_complete_paralysis"));
-            alsSymptoms.add(new Symptom("inability_to_move_completely"));
+            ArrayList<Symptom> alsSymptoms = new ArrayList<Symptom>();
+            alsSymptoms.add(Symptom.MUSCLE_WEAKNESS);
+            alsSymptoms.add(Symptom.PARTIAL_OR_COMPLETE_PARALYSIS);
+            alsSymptoms.add(Symptom.INABILITY_TO_COMPLETELY_MOVE);
 
             Patient alsPatient = new Patient(alsSymptoms);
             Disease amyotrophicLateralSclerosis = new Disease("amyotrophic lateral sclerosis");
@@ -74,7 +74,7 @@ public class DiagnosisTest {
     public void testHuntington(){
         try{
             ArrayList<Symptom> huntingtonSymptoms = new ArrayList<>();
-            huntingtonSymptoms.add(new Symptom("involvement_in_voluntary_skeletal_muscles"));
+            huntingtonSymptoms.add(Symptom.INVOLVEMENT_OF_VOLUNTARY_SKELETAL_MUSCLES);
 
             Patient huntingtonPatient = new Patient(huntingtonSymptoms);
             Disease huntington = new Disease("huntington");
@@ -93,8 +93,8 @@ public class DiagnosisTest {
     public void testMultipleSclerosis(){
         try{
             ArrayList<Symptom> msSymptoms = new ArrayList<>();
-            msSymptoms.add(new Symptom("blurred_vision"));
-            msSymptoms.add(new Symptom("emotional_incontinence"));
+            msSymptoms.add(Symptom.BLURRED_VISION);
+            msSymptoms.add(Symptom.EMOTIONAL_INCONTINENCE);
 
             Patient multipleSclerosisPatient = new Patient(msSymptoms);
             Disease multipleSclerosis = new Disease("multiple sclerosis");
@@ -113,7 +113,7 @@ public class DiagnosisTest {
     public void testMyastheniaGravis(){
         try{
             ArrayList<Symptom> mgSymptoms = new ArrayList<>();
-            mgSymptoms.add(new Symptom("muscle_weakness"));
+            mgSymptoms.add(Symptom.MUSCLE_WEAKNESS);
 
             Patient myastheniaGravisPatient = new Patient(mgSymptoms);
             Disease myastheniaGravis = new Disease("myasthenia gravis");
@@ -132,8 +132,8 @@ public class DiagnosisTest {
     public void testParkinson(){
         try{
             ArrayList<Symptom> parkinsonSymptoms = new ArrayList<>();
-            parkinsonSymptoms.add(new Symptom("bradykinesia"));
-            parkinsonSymptoms.add(new Symptom("muscle_stiffness"));
+            parkinsonSymptoms.add(Symptom.BRADYKINESIA);
+            parkinsonSymptoms.add(Symptom.MUSCLE_STIFFNESS);
 
             Patient parkinsonPatient = new Patient(parkinsonSymptoms);
             Disease parkinson = new Disease("parkinson");
@@ -147,5 +147,4 @@ public class DiagnosisTest {
             instance.close();
         }
     }
-*/
 }
