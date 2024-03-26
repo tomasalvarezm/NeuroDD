@@ -40,7 +40,7 @@ public class AppController implements Initializable {
     public CheckBox hyperreflexia, increasedUrination, lossGagReflex, opticNeuritis;
     public CheckBox respiratoryCompromise, seizures, spasms, urinaryIncontinence, weightLoss;
     public TextField searchTextMotor, searchTextCognitive, searchTextPsychiatric, searchTextOthers;
-    public Label diagnosis_lbl, diagnosisMessageAlert;
+    public Label diagnosisMessageAlert, patient_info_lbl, symptoms_lbl, diagnosis_lbl;
     public TextField dni_txt, name_txt;
     public ChoiceBox sex_box;
     public DatePicker date_picker;
@@ -113,12 +113,12 @@ public class AppController implements Initializable {
             String pathname = "../NeuroDD/src/main/resources/symptom_weights/Symptoms_DSS.xlsx";
             SymptomWeights symptomWeights = new SymptomWeights(pathname);
 
-            patient.calculateDiseaseScore(symptomWeights.getAlzheimer_weights(), "alzheimer", symptomWeights.max_score_alzheimer);
-            patient.calculateDiseaseScore(symptomWeights.getAmyotrophic_lateral_sclerosis_weights(), "amyotrophic lateral sclerosis", symptomWeights.max_score_amyotrophic_lateral_sclerosis);
-            patient.calculateDiseaseScore(symptomWeights.getHuntington_weights(), "huntington", symptomWeights.max_score_huntington);
-            patient.calculateDiseaseScore(symptomWeights.getMultiple_sclerosis_weights(), "multiple sclerosis", symptomWeights.max_score_multiple_sclerosis);
-            patient.calculateDiseaseScore(symptomWeights.getMyasthenia_gravis_weights(), "myasthenia gravis", symptomWeights.max_score_myasthenia_gravis);
-            patient.calculateDiseaseScore(symptomWeights.getParkinson_weights(), "parkinson", symptomWeights.max_score_parkinson);
+            patient.calculateDiseaseScore(symptomWeights.getAlzheimer_weights(), "Alzheimer", symptomWeights.max_score_alzheimer);
+            patient.calculateDiseaseScore(symptomWeights.getAmyotrophic_lateral_sclerosis_weights(), "Amyotrophic lateral sclerosis", symptomWeights.max_score_amyotrophic_lateral_sclerosis);
+            patient.calculateDiseaseScore(symptomWeights.getHuntington_weights(), "Huntington", symptomWeights.max_score_huntington);
+            patient.calculateDiseaseScore(symptomWeights.getMultiple_sclerosis_weights(), "Multiple sclerosis", symptomWeights.max_score_multiple_sclerosis);
+            patient.calculateDiseaseScore(symptomWeights.getMyasthenia_gravis_weights(), "Myasthenia gravis", symptomWeights.max_score_myasthenia_gravis);
+            patient.calculateDiseaseScore(symptomWeights.getParkinson_weights(), "Parkinson", symptomWeights.max_score_parkinson);
 
             System.out.println(patient);
 
@@ -239,7 +239,19 @@ public class AppController implements Initializable {
 
     public void HideDiagnosisAlert(Event event) {
         diagnosisMessageAlert.setVisible(false);
-        diagnosis_lbl.setText(this.patient.toString());
+        patient_info_lbl.setText(patient.toString());
+        String symptom_text = "";
+        for (Symptom symptom : patient.getSymptoms()) {
+            symptom_text += symptom.toString() + ", ";
+        }
+        symptoms_lbl.setText(symptom_text);
+        symptoms_lbl.setWrapText(true);
+
+        String diagnosis_text = "";
+        for (Disease disease : patient.getDiseases()){
+            diagnosis_text += disease.getName() + ".\t" + "Probability: " + disease.getScore() + "\n";
+        }
+        diagnosis_lbl.setText(diagnosis_text);
         diagnosis_lbl.setWrapText(true);
 
     }

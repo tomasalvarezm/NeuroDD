@@ -37,7 +37,7 @@ public class DiagnosisTest {
 
             //Creamos un paciente con los sintomas
             Patient alzheimerPatient = new Patient(alzheimerSymptoms);
-            Disease alzheimer = new Disease("alzheimer");
+            Disease alzheimer = new Disease("Alzheimer");
 
             patientUnit.getPatients().add(alzheimerPatient);
 
@@ -58,7 +58,7 @@ public class DiagnosisTest {
             alsSymptoms.add(Symptom.INABILITY_TO_COMPLETELY_MOVE);
 
             Patient alsPatient = new Patient(alsSymptoms);
-            Disease amyotrophicLateralSclerosis = new Disease("amyotrophic lateral sclerosis");
+            Disease amyotrophicLateralSclerosis = new Disease("Amyotrophic lateral sclerosis");
 
             patientUnit.getPatients().add(alsPatient);
 
@@ -77,7 +77,7 @@ public class DiagnosisTest {
             huntingtonSymptoms.add(Symptom.INVOLVEMENT_OF_VOLUNTARY_SKELETAL_MUSCLES);
 
             Patient huntingtonPatient = new Patient(huntingtonSymptoms);
-            Disease huntington = new Disease("huntington");
+            Disease huntington = new Disease("Huntington");
 
             patientUnit.getPatients().add(huntingtonPatient);
 
@@ -97,7 +97,7 @@ public class DiagnosisTest {
             msSymptoms.add(Symptom.EMOTIONAL_INCONTINENCE);
 
             Patient multipleSclerosisPatient = new Patient(msSymptoms);
-            Disease multipleSclerosis = new Disease("multiple sclerosis");
+            Disease multipleSclerosis = new Disease("Multiple sclerosis");
 
             patientUnit.getPatients().add(multipleSclerosisPatient);
 
@@ -116,7 +116,7 @@ public class DiagnosisTest {
             mgSymptoms.add(Symptom.MUSCLE_WEAKNESS);
 
             Patient myastheniaGravisPatient = new Patient(mgSymptoms);
-            Disease myastheniaGravis = new Disease("myasthenia gravis");
+            Disease myastheniaGravis = new Disease("Myasthenia gravis");
 
             patientUnit.getPatients().add(myastheniaGravisPatient);
 
@@ -136,7 +136,7 @@ public class DiagnosisTest {
             parkinsonSymptoms.add(Symptom.MUSCLE_STIFFNESS);
 
             Patient parkinsonPatient = new Patient(parkinsonSymptoms);
-            Disease parkinson = new Disease("parkinson");
+            Disease parkinson = new Disease("Parkinson");
 
             patientUnit.getPatients().add(parkinsonPatient);
 

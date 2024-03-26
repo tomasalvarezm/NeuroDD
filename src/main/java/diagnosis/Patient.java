@@ -56,15 +56,11 @@ public class Patient {
 
     @Override
     public String toString() {
-        String message = "Patient \n" +
-                "DNI : " + id + '\n' +
-                "Name : " + name + '\n' +
-                "Age : " + age + '\n' +
-                "Date of birth : " + dob + '\n' +
-                "Sex : " + sex + '\n' + '\n' +
-                "Symptoms \n" + symptoms.toString();
-
-        return message;
+        return  "Name: " + name + ",   " +
+                "DNI: " + id  + ",   " +
+                "Age: " + age + ",    " +
+                "Date of birth: " + dob + ",   " +
+                "Sex: " + sex ;
 
     }
 }

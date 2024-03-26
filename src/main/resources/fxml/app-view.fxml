@@ -18,6 +18,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="550.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.AppController">
    <center>
@@ -204,7 +205,28 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Label fx:id="diagnosis_lbl" layoutX="96.0" layoutY="82.0" prefHeight="358.0" prefWidth="496.0" textFill="WHITE" />
+                        <VBox alignment="TOP_CENTER" layoutX="32.0" layoutY="13.0" prefHeight="498.0" prefWidth="625.0" spacing="5.0">
+                           <children>
+                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="161.0" text="PATIENT" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="patient_info_lbl" alignment="CENTER" prefHeight="76.0" prefWidth="557.0" textFill="WHITE" />
+                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="161.0" text="SYMPTOMS" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="symptoms_lbl" alignment="CENTER" prefHeight="99.0" prefWidth="557.0" textFill="WHITE" />
+                              <Label alignment="CENTER" prefHeight="30.0" prefWidth="161.0" text="DIAGNOSIS" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="diagnosis_lbl" alignment="CENTER" prefHeight="190.0" prefWidth="557.0" textFill="WHITE" />
+                           </children>
+                        </VBox>
                      </children></AnchorPane>
             </content>
           </Tab>
