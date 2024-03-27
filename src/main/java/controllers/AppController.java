@@ -2,10 +2,12 @@ package controllers;
 
 import diagnosis.*;
 import javafx.animation.FadeTransition;
+import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Node;
@@ -48,6 +50,9 @@ public class AppController implements Initializable {
     public Label multiple_sclerosis_prob, myasthenia_prob, parkinson_prob;
     public ProgressBar alzheimer_pbar, amyotrophic_pbar, huntington_pbar;
     public ProgressBar multiple_sclerosis_pbar, myasthenia_pbar, parkinson_pbar;
+    public Hyperlink alzheimer_link, amyotrophic_link, huntington_link, multiple_sclerosis_link;
+    public Hyperlink myasthenia_link, parkinson_link;
+    private HostServices hostServices;
     public Patient patient;
     PatientUnit patientUnit;
     RuleUnitInstance<PatientUnit> instance;
@@ -285,14 +290,34 @@ public class AppController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        sex_box.getItems().addAll("Male", "Female");
-        sex_box.setValue("Male");
         patientUnit = new PatientUnit();
         instance = RuleUnitProvider.get().createRuleUnitInstance(patientUnit);
 
+        sex_box.getItems().addAll("Male", "Female");
+        sex_box.setValue("Male");
+
+        String iconPath = "icons/External Link.png";
+        createHyperlinkWithIcon(alzheimer_link, "https://medlineplus.gov/alzheimersdisease.html", iconPath);
+//        createHyperlinkWithIcon(amyotrophic_link, "", iconPath);
+//        createHyperlinkWithIcon(huntington_link, "", iconPath);
+//        createHyperlinkWithIcon(multiple_sclerosis_link, "", iconPath);
+//        createHyperlinkWithIcon(myasthenia_link, "", iconPath);
+//        createHyperlinkWithIcon(parkinson_link, "", iconPath);
+
     }
 
-    public void handleClose(WindowEvent event) {
+    private void createHyperlinkWithIcon(Hyperlink hyperlink, String url, String iconPath){
+        ImageView iconView = new ImageView(new Image(getClass().getResourceAsStream(iconPath)));
+        hyperlink.setGraphic(iconView);
+
+        hyperlink.setOnMouseEntered(event -> hyperlink.setUnderline(true));
+        hyperlink.setOnMouseExited(event -> hyperlink.setUnderline(false));
+        hyperlink.setOnAction(event -> hostServices.showDocument(url));
+    }
+
+    public void setHostServices(HostServices hostServices) { this.hostServices = hostServices; }
+
+    public void handleClose() {
         if (instance != null) {
             System.out.println("cerrando instance");
             instance.close();
