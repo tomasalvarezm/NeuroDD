@@ -296,13 +296,13 @@ public class AppController implements Initializable {
         sex_box.getItems().addAll("Male", "Female");
         sex_box.setValue("Male");
 
-        String iconPath = "icons/External Link.png";
+        String iconPath = "../icons/External Link.png";
         createHyperlinkWithIcon(alzheimer_link, "https://medlineplus.gov/alzheimersdisease.html", iconPath);
-//        createHyperlinkWithIcon(amyotrophic_link, "", iconPath);
-//        createHyperlinkWithIcon(huntington_link, "", iconPath);
-//        createHyperlinkWithIcon(multiple_sclerosis_link, "", iconPath);
-//        createHyperlinkWithIcon(myasthenia_link, "", iconPath);
-//        createHyperlinkWithIcon(parkinson_link, "", iconPath);
+        createHyperlinkWithIcon(amyotrophic_link, "https://www.ninds.nih.gov/health-information/disorders/amyotrophic-lateral-sclerosis-als", iconPath);
+        createHyperlinkWithIcon(huntington_link, "https://medlineplus.gov/huntingtonsdisease.html", iconPath);
+        createHyperlinkWithIcon(multiple_sclerosis_link, "https://www.hopkinsmedicine.org/health/conditions-and-diseases/multiple-sclerosis-ms#:~:text=Multiple%20sclerosis%20(MS)%20is%20a%20chronic%20disease%20of%20the%20central,trouble%20walking%2C%20and%20tingling%20feelings.", iconPath);
+        createHyperlinkWithIcon(myasthenia_link, "https://medlineplus.gov/myastheniagravis.html", iconPath);
+        createHyperlinkWithIcon(parkinson_link, "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055", iconPath);
 
     }
 
