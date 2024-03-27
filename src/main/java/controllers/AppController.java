@@ -296,20 +296,16 @@ public class AppController implements Initializable {
         sex_box.getItems().addAll("Male", "Female");
         sex_box.setValue("Male");
 
-        String iconPath = "../icons/External Link.png";
-        createHyperlinkWithIcon(alzheimer_link, "https://medlineplus.gov/alzheimersdisease.html", iconPath);
-        createHyperlinkWithIcon(amyotrophic_link, "https://www.ninds.nih.gov/health-information/disorders/amyotrophic-lateral-sclerosis-als", iconPath);
-        createHyperlinkWithIcon(huntington_link, "https://medlineplus.gov/huntingtonsdisease.html", iconPath);
-        createHyperlinkWithIcon(multiple_sclerosis_link, "https://www.hopkinsmedicine.org/health/conditions-and-diseases/multiple-sclerosis-ms#:~:text=Multiple%20sclerosis%20(MS)%20is%20a%20chronic%20disease%20of%20the%20central,trouble%20walking%2C%20and%20tingling%20feelings.", iconPath);
-        createHyperlinkWithIcon(myasthenia_link, "https://medlineplus.gov/myastheniagravis.html", iconPath);
-        createHyperlinkWithIcon(parkinson_link, "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055", iconPath);
+        createHyperlinkWithIcon(alzheimer_link, "https://medlineplus.gov/alzheimersdisease.html");
+        createHyperlinkWithIcon(amyotrophic_link, "https://www.ninds.nih.gov/health-information/disorders/amyotrophic-lateral-sclerosis-als");
+        createHyperlinkWithIcon(huntington_link, "https://medlineplus.gov/huntingtonsdisease.html");
+        createHyperlinkWithIcon(multiple_sclerosis_link, "https://www.hopkinsmedicine.org/health/conditions-and-diseases/multiple-sclerosis-ms#:~:text=Multiple%20sclerosis%20(MS)%20is%20a%20chronic%20disease%20of%20the%20central,trouble%20walking%2C%20and%20tingling%20feelings.");
+        createHyperlinkWithIcon(myasthenia_link, "https://medlineplus.gov/myastheniagravis.html");
+        createHyperlinkWithIcon(parkinson_link, "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055");
 
     }
 
-    private void createHyperlinkWithIcon(Hyperlink hyperlink, String url, String iconPath){
-        ImageView iconView = new ImageView(new Image(getClass().getResourceAsStream(iconPath)));
-        hyperlink.setGraphic(iconView);
-
+    private void createHyperlinkWithIcon(Hyperlink hyperlink, String url){
         hyperlink.setOnMouseEntered(event -> hyperlink.setUnderline(true));
         hyperlink.setOnMouseExited(event -> hyperlink.setUnderline(false));
         hyperlink.setOnAction(event -> hostServices.showDocument(url));
@@ -319,9 +315,7 @@ public class AppController implements Initializable {
 
     public void handleClose() {
         if (instance != null) {
-            System.out.println("cerrando instance");
             instance.close();
-            System.out.println("instance cerrada");
         }
     }
 }

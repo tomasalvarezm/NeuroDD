@@ -289,55 +289,97 @@
                      <children>
                         <VBox layoutX="14.0" layoutY="15.0" prefHeight="491.0" prefWidth="660.0" AnchorPane.leftAnchor="14.0">
                            <children>
-                              <Hyperlink fx:id="alzheimer_link" contentDisplay="CENTER" prefHeight="25.0" prefWidth="125.0" text="Alzheimer" textAlignment="CENTER" textFill="WHITE">
+                              <Hyperlink fx:id="alzheimer_link" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="125.0" text="Alzheimer" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/External%20Link.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Hyperlink>
                               <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="650.0" text="Alzheimer's is a progressive neurological disorder that causes memory loss, cognitive decline, and behavioral changes. It's characterized by abnormal protein deposits in the brain, leading to nerve cell death." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
-                              <Hyperlink fx:id="amyotrophic_link" contentDisplay="CENTER" prefHeight="28.0" prefWidth="228.0" text="Amyotrophic lateral sclerosis (ALS)" textAlignment="CENTER" textFill="WHITE">
+                              <Hyperlink fx:id="amyotrophic_link" contentDisplay="RIGHT" prefHeight="28.0" prefWidth="228.0" text="Amyotrophic lateral sclerosis (ALS)" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                                  <padding>
                                     <Insets top="7.0" />
                                  </padding>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/External%20Link.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Hyperlink>
                               <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="650.0" text="ALS is a progressive neurodegenerative disease affecting nerve cells in the brain and spinal cord. It leads to muscle weakness, paralysis, and eventually respiratory failure." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
-                              <Hyperlink fx:id="huntington_link" contentDisplay="CENTER" prefHeight="25.0" prefWidth="125.0" text="Huntington" textAlignment="CENTER" textFill="WHITE">
+                              <Hyperlink fx:id="huntington_link" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="125.0" text="Huntington" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                                  <padding>
                                     <Insets top="7.0" />
                                  </padding>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/External%20Link.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Hyperlink>
                               <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="650.0" text="Huntington's is an inherited neurological disorder causing progressive brain cell degeneration. It results in involuntary movements, cognitive decline, and psychiatric symptoms." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
-                              <Hyperlink fx:id="multiple_sclerosis_link" contentDisplay="CENTER" prefHeight="28.0" prefWidth="154.0" text="Multiple sclerosis (MS)" textAlignment="CENTER" textFill="WHITE">
+                              <Hyperlink fx:id="multiple_sclerosis_link" contentDisplay="RIGHT" prefHeight="28.0" prefWidth="154.0" text="Multiple sclerosis (MS)" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                                  <padding>
                                     <Insets top="7.0" />
                                  </padding>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/External%20Link.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Hyperlink>
                               <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="650.0" text="MS is a chronic autoimmune disorder affecting the central nervous system. It leads to inflammation, demyelination, and scar tissue formation, resulting in various symptoms including fatigue, muscle weakness, and vision problems." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
-                              <Hyperlink fx:id="myasthenia_link" contentDisplay="CENTER" prefHeight="28.0" prefWidth="154.0" text="Myasthenia gravis" textAlignment="CENTER" textFill="WHITE">
+                              <Hyperlink fx:id="myasthenia_link" contentDisplay="RIGHT" prefHeight="28.0" prefWidth="154.0" text="Myasthenia gravis" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                                  <padding>
                                     <Insets top="7.0" />
                                  </padding>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/External%20Link.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Hyperlink>
                               <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="650.0" text="Myasthenia gravis is a neuromuscular disorder characterized by muscle weakness and fatigue, particularly in facial, chewing, and swallowing muscles. It's caused by antibodies attacking acetylcholine receptors at the neuromuscular junction." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
-                              <Hyperlink fx:id="parkinson_link" contentDisplay="CENTER" prefHeight="25.0" prefWidth="125.0" text="Parkinson" textAlignment="CENTER" textFill="WHITE">
+                              <Hyperlink fx:id="parkinson_link" contentDisplay="RIGHT" prefHeight="25.0" prefWidth="125.0" text="Parkinson" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
                                  <padding>
                                     <Insets top="7.0" />
                                  </padding>
+                                 <graphic>
+                                    <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../icons/External%20Link.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
                               </Hyperlink>
                               <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="650.0" text="Parkinson's is a progressive neurological disorder affecting movement. It's caused by the loss of dopamine-producing neurons in the brain, leading to tremors, rigidity, and slowness of movement." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
                            </children>
