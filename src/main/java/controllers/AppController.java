@@ -62,6 +62,7 @@ public class AppController implements Initializable {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
+        alert.getButtonTypes().setAll(new ButtonType("OK"));
 
         if (dni_txt.getText().isEmpty()){
             alert.setContentText("Introduced your DNI");
@@ -92,6 +93,7 @@ public class AppController implements Initializable {
             alert.setTitle("Information");
             alert.setHeaderText(null);
             alert.setContentText("Introduced patient data first");
+            alert.getButtonTypes().setAll(new ButtonType("OK"));
             alert.showAndWait();
         } else {
             ArrayList<CheckBox> allCheckBoxes = new ArrayList<>();

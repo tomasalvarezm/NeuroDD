@@ -296,7 +296,7 @@
                                  <graphic>
                                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../icons/External%20Link.png" />
+                                          <Image url="@../icons/External_Link.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -312,7 +312,7 @@
                                  <graphic>
                                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../icons/External%20Link.png" />
+                                          <Image url="@../icons/External_Link.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -328,7 +328,7 @@
                                  <graphic>
                                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../icons/External%20Link.png" />
+                                          <Image url="@../icons/External_Link.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -344,7 +344,7 @@
                                  <graphic>
                                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../icons/External%20Link.png" />
+                                          <Image url="@../icons/External_Link.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -360,7 +360,7 @@
                                  <graphic>
                                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../icons/External%20Link.png" />
+                                          <Image url="@../icons/External_Link.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>
@@ -376,7 +376,7 @@
                                  <graphic>
                                     <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../icons/External%20Link.png" />
+                                          <Image url="@../icons/External_Link.png" />
                                        </image>
                                     </ImageView>
                                  </graphic>

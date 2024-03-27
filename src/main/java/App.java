@@ -5,6 +5,7 @@ import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -37,9 +38,12 @@ public class App extends Application {
         alert.setTitle("Confirm Exit");
         alert.setHeaderText("Are you sure you want to close the application?");
 //        alert.setContentText("Todos los cambios no guardados se perderán.");
+        ButtonType buttonTypeOK = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
+        alert.getButtonTypes().setAll(buttonTypeOK, buttonTypeCancel);
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
+        if (result.isPresent() && result.get() == buttonTypeOK) {
             AppController controller = fxmlLoader.getController();
             controller.handleClose();
         } else {
