@@ -147,8 +147,6 @@ public class AppController implements Initializable {
             patient.calculateDiseaseScore(symptomWeights.getMyasthenia_gravis_weights(), "Myasthenia gravis", symptomWeights.max_score_myasthenia_gravis);
             patient.calculateDiseaseScore(symptomWeights.getParkinson_weights(), "Parkinson", symptomWeights.max_score_parkinson);
 
-//            System.out.println(patient);
-
             diagnosisMessageAlert.setVisible(true);
         }
     }
