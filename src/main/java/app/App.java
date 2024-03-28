@@ -28,7 +28,7 @@ public class App extends Application {
         stage.show();
 
         AppController controller = fxmlLoader.getController();
-        controller.setHostServices(getHostServices()
+        controller.setHostServices(getHostServices());
     }
 
     public static void main(String[] args) {
