@@ -16,7 +16,7 @@ public class Patient {
     public Patient(String id, String name, LocalDate dob, Sex sex) {
         this.id = id;
         this.name = name;
-        this.age = getAge(dob);
+        getAge(dob);
         this.dob = dob;
         this.sex = sex;
         this.symptoms = new ArrayList<>();
@@ -54,18 +54,17 @@ public class Patient {
         }
     }
 
-    private int getAge(LocalDate birth) {
-        int age = 0;
-        if (LocalDate.now().getMonthValue() > birth.getMonthValue()) {
-            age = LocalDate.now().getYear() - birth.getYear();
-        } else if (LocalDate.now().getDayOfMonth() == birth.getMonthValue()) {
-            if (LocalDate.now().getDayOfMonth() >= birth.getDayOfMonth()) {
-                age = LocalDate.now().getYear() - birth.getYear();
-            }
+    private void getAge(LocalDate birth) {
+        LocalDate now = LocalDate.now();
+        if (now.getMonthValue() < birth.getMonthValue()) {
+            this.age = now.getYear() - birth.getYear() -1;
+        } else if (now.getMonthValue() > birth.getMonthValue()) {
+            this.age = now.getYear() - birth.getYear();
         } else {
-            age = LocalDate.now().getYear() - birth.getYear() - 1;
+            if (now.getDayOfMonth() < birth.getDayOfMonth()){
+                this.age = now.getYear() - birth.getYear() -1;
+            } else this.age = now.getYear() - birth.getYear();
         }
-        return age;
     }
     @Override
     public String toString() {

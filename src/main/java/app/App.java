@@ -1,7 +1,7 @@
+package app;
 
 import controllers.AppController;
 import javafx.application.Application;
-import javafx.application.HostServices;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -18,7 +18,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        fxmlLoader = new FXMLLoader(App.class.getResource("fxml/app-view.fxml"));
+        fxmlLoader = new FXMLLoader(app.App.class.getResource("/fxml/app-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 850, 550);
         stage.setTitle("Neurodegenerative Diagnosis");
         stage.setScene(scene);

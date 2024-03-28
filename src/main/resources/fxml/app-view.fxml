@@ -38,7 +38,7 @@
                         <TextField fx:id="dni_txt" layoutX="233.0" layoutY="200.0" prefHeight="25.0" prefWidth="223.0" promptText="DNI" style="-fx-background-color: #3b3b3b; -fx-text-fill: #c9c9c9;" />
                         <TextField fx:id="name_txt" layoutX="233.0" layoutY="243.0" prefHeight="25.0" prefWidth="223.0" promptText="Full name" style="-fx-background-color: #3b3b3b; -fx-text-fill: #c9c9c9;" />
                         <ChoiceBox fx:id="sex_box" layoutX="233.0" layoutY="290.0" prefHeight="25.0" prefWidth="223.0" />
-                        <DatePicker fx:id="date_picker" layoutX="233.0" layoutY="335.0" prefHeight="25.0" prefWidth="223.0" promptText="Date of birth" style="-fx-background-color: #3b3b3b; -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);">
+                        <DatePicker fx:id="date_picker" layoutX="233.0" layoutY="335.0" prefHeight="25.0" prefWidth="223.0" promptText="Date of birth (mm/dd/aaaa)" style="-fx-background-color: #3b3b3b; -fx-prompt-text-fill: derive(-fx-control-inner-background, -30%);">
                            <effect>
                               <ColorAdjust />
                            </effect>
