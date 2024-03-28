@@ -1,5 +1,6 @@
 package diagnosis;
 
+import java.io.InputStream;
 import java.util.Map;
 import java.io.FileInputStream;
 import java.util.HashMap;
@@ -24,12 +25,11 @@ public class SymptomWeights {
     private Map<Symptom, Integer> myasthenia_gravis_weights;
     private Map<Symptom, Integer> parkinson_weights;
 
-    public SymptomWeights(String pathname) {
+    public SymptomWeights() {
         try {
-            FileInputStream file = new FileInputStream(pathname);
-
+            InputStream inputStream = getClass().getResourceAsStream("/symptom_weights/Symptoms_DSS.xlsx");
             //Create Workbook instance holding reference to .xlsx file
-            XSSFWorkbook wb = new XSSFWorkbook(file);
+            XSSFWorkbook wb = new XSSFWorkbook(inputStream);
 
             //Get first/desired sheet from the workbook
             XSSFSheet ws = wb.getSheetAt(1);
@@ -69,7 +69,7 @@ public class SymptomWeights {
                         break;
                 }
             }
-            file.close();
+            inputStream.close();
 
         } catch (Exception ex) {
             ex.printStackTrace();

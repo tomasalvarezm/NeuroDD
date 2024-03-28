@@ -138,8 +138,7 @@ public class AppController implements Initializable {
 
             instance.fire();
 
-            String pathname = "../NeuroDD/src/main/resources/symptom_weights/Symptoms_DSS.xlsx";
-            SymptomWeights symptomWeights = new SymptomWeights(pathname);
+            SymptomWeights symptomWeights = new SymptomWeights();
 
             patient.calculateDiseaseScore(symptomWeights.getAlzheimer_weights(), "Alzheimer", symptomWeights.max_score_alzheimer);
             patient.calculateDiseaseScore(symptomWeights.getAmyotrophic_lateral_sclerosis_weights(), "Amyotrophic lateral sclerosis", symptomWeights.max_score_amyotrophic_lateral_sclerosis);
@@ -318,14 +317,6 @@ public class AppController implements Initializable {
 
     public void setHostServices(HostServices hostServices) { this.hostServices = hostServices; }
 
-    private boolean isValidDate(LocalDate date) {
-        try {
-            LocalDate.of(date.getYear(), date.getMonth(), date.getDayOfMonth());
-            return true;
-        } catch (DateTimeException e) {
-            return false;
-        }
-    }
 
     public void handleClose() {
         if (instance != null) {

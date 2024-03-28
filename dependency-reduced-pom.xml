@@ -45,7 +45,7 @@
             <configuration>
               <transformers>
                 <transformer>
-                  <mainClass>app.App</mainClass>
+                  <mainClass>app.AppPlus</mainClass>
                 </transformer>
               </transformers>
               <filters>
