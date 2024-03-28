@@ -23,11 +23,12 @@ public class App extends Application {
         stage.setTitle("Neurodegenerative Diagnosis");
         stage.setScene(scene);
         stage.setResizable(false);
+
         stage.setOnCloseRequest(event -> handleClose(event));
         stage.show();
 
         AppController controller = fxmlLoader.getController();
-        controller.setHostServices(getHostServices());
+        controller.setHostServices(getHostServices()
     }
 
     public static void main(String[] args) {
