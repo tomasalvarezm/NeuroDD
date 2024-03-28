@@ -17,7 +17,6 @@ rule "Confirm Alzheimer"
     then
         //modify($patient){ addDisease(new Disease("Alzheimer")) }
         $patient.addDisease(new Disease("Alzheimer"));
-        System.out.println("Alzheimer's disease is added to the list.");
 
 end
 
@@ -34,7 +33,6 @@ rule "Confirm ALS"
     then
         //modify($patient){ addDisease(new Disease("Amyotrophic lateral sclerosis")) }
         $patient.addDisease(new Disease("Amyotrophic lateral sclerosis"));
-        System.out.println("Amyotrophic Lateral Sclerosis's disease is added to the list.");
 
 end
 
@@ -50,7 +48,6 @@ rule "Confirm Huntington"
     then
         //modify($patient){ addDisease(new Disease("Huntington")) }
         $patient.addDisease(new Disease("Huntington"));
-        System.out.println("Huntington's disease is added to the list.");
 
 end
 
@@ -66,7 +63,6 @@ rule "Confirm MultipleSclerosis"
     then
         //modify($patient){ addDisease(new Disease("Multiple sclerosis")) }
         $patient.addDisease(new Disease("Multiple sclerosis"));
-        System.out.println("Multiple Sclerosis's disease is added to the list.");
 
 end
 
@@ -83,7 +79,6 @@ rule "Confirm MyastheniaGravis"
     then
         //modify($patient){ addDisease(new Disease("Myasthenia gravis")) }
         $patient.addDisease(new Disease("Myasthenia gravis"));
-        System.out.println("Myasthenia Gravis' disease is added to the list.");
 
 end
 
@@ -100,7 +95,6 @@ rule "Confirm Parkinson"
     then
         //modify($patient){ addDisease(new Disease("Parkinson")) }
         $patient.addDisease(new Disease("Parkinson"));
-        System.out.println("Parkinson's disease is added to the list.");
 
 end
 
