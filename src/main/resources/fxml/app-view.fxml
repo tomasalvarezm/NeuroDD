@@ -302,7 +302,7 @@
                                  </graphic>
                               </Hyperlink>
                               <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="650.0" text="Alzheimer's is a progressive neurological disorder that causes memory loss, cognitive decline, and behavioral changes. It's characterized by abnormal protein deposits in the brain, leading to nerve cell death." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
-                              <Hyperlink fx:id="amyotrophic_link" contentDisplay="RIGHT" prefHeight="28.0" prefWidth="228.0" text="Amyotrophic lateral sclerosis (ALS)" textAlignment="CENTER" textFill="WHITE">
+                              <Hyperlink fx:id="amyotrophic_link" contentDisplay="RIGHT" prefHeight="28.0" prefWidth="245.0" text="Amyotrophic lateral sclerosis (ALS)" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
@@ -334,7 +334,7 @@
                                  </graphic>
                               </Hyperlink>
                               <Label alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="62.0" prefWidth="650.0" text="Huntington's is an inherited neurological disorder causing progressive brain cell degeneration. It results in involuntary movements, cognitive decline, and psychiatric symptoms." textAlignment="JUSTIFY" textFill="WHITE" wrapText="true" />
-                              <Hyperlink fx:id="multiple_sclerosis_link" contentDisplay="RIGHT" prefHeight="28.0" prefWidth="154.0" text="Multiple sclerosis (MS)" textAlignment="CENTER" textFill="WHITE">
+                              <Hyperlink fx:id="multiple_sclerosis_link" contentDisplay="RIGHT" prefHeight="28.0" prefWidth="183.0" text="Multiple sclerosis (MS)" textAlignment="CENTER" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="13.0" />
                                  </font>
