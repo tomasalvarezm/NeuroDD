@@ -2,10 +2,12 @@ package controllers;
 
 import diagnosis.*;
 import javafx.animation.FadeTransition;
+import javafx.application.HostServices;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Node;
@@ -18,6 +20,8 @@ import org.drools.ruleunits.api.RuleUnitProvider;
 //import org.kie.api.runtime.KieContainer;
 
 import java.net.URL;
+import java.time.DateTimeException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -48,35 +52,54 @@ public class AppController implements Initializable {
     public Label multiple_sclerosis_prob, myasthenia_prob, parkinson_prob;
     public ProgressBar alzheimer_pbar, amyotrophic_pbar, huntington_pbar;
     public ProgressBar multiple_sclerosis_pbar, myasthenia_pbar, parkinson_pbar;
+    public Hyperlink alzheimer_link, amyotrophic_link, huntington_link, multiple_sclerosis_link;
+    public Hyperlink myasthenia_link, parkinson_link;
+    private HostServices hostServices;
     public Patient patient;
     PatientUnit patientUnit;
     RuleUnitInstance<PatientUnit> instance;
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        patientUnit = new PatientUnit();
+        instance = RuleUnitProvider.get().createRuleUnitInstance(patientUnit);
+
+        sex_box.getItems().addAll(Sex.MALE, Sex.FEMALE);
+        sex_box.setValue(Sex.MALE);
+
+        createHyperlinkWithIcon(alzheimer_link, "https://medlineplus.gov/alzheimersdisease.html");
+        createHyperlinkWithIcon(amyotrophic_link, "https://www.ninds.nih.gov/health-information/disorders/amyotrophic-lateral-sclerosis-als");
+        createHyperlinkWithIcon(huntington_link, "https://medlineplus.gov/huntingtonsdisease.html");
+        createHyperlinkWithIcon(multiple_sclerosis_link, "https://www.hopkinsmedicine.org/health/conditions-and-diseases/multiple-sclerosis-ms#:~:text=Multiple%20sclerosis%20(MS)%20is%20a%20chronic%20disease%20of%20the%20central,trouble%20walking%2C%20and%20tingling%20feelings.");
+        createHyperlinkWithIcon(myasthenia_link, "https://medlineplus.gov/myastheniagravis.html");
+        createHyperlinkWithIcon(parkinson_link, "https://www.mayoclinic.org/diseases-conditions/parkinsons-disease/symptoms-causes/syc-20376055");
+
+    }
 
 
     public void handleButtonSaveInfo(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information");
         alert.setHeaderText(null);
+        alert.getButtonTypes().setAll(new ButtonType("OK"));
 
         if (dni_txt.getText().isEmpty()){
             alert.setContentText("Introduced your DNI");
             alert.showAndWait();
-        } else if (name_txt.getText().isEmpty()){
+        } else if (name_txt.getText().isEmpty()) {
             alert.setContentText("Introduced your full name");
             alert.showAndWait();
+        } else if (date_picker.getValue() == null){
+                alert.setContentText("Choose your date of birth");
+                alert.showAndWait();
         } else {
             ok_img.setOpacity(1);
             FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), ok_img);
             fadeTransition.setFromValue(1.0);
             fadeTransition.setToValue(0.0);
-            Sex sex;
-            if (sex_box.getValue().toString().equals("Male")){
-                sex = Sex.MALE;
-            } else {
-                sex = Sex.FEMALE;
-            }
             fadeTransition.playFromStart();
-            patient = new Patient(dni_txt.getText(), name_txt.getText(), date_picker.getValue(), sex);
+            patient = new Patient(dni_txt.getText(), name_txt.getText(), date_picker.getValue(), (Sex) sex_box.getValue());
         }
     }
 
@@ -87,6 +110,7 @@ public class AppController implements Initializable {
             alert.setTitle("Information");
             alert.setHeaderText(null);
             alert.setContentText("Introduced patient data first");
+            alert.getButtonTypes().setAll(new ButtonType("OK"));
             alert.showAndWait();
         } else {
             ArrayList<CheckBox> allCheckBoxes = new ArrayList<>();
@@ -242,61 +266,70 @@ public class AppController implements Initializable {
     }
 
     public void handleDiagnosisTab(Event event) {
-        diagnosisMessageAlert.setVisible(false);
-        patient_info_lbl.setText(patient.toString());
+        if (patient != null) {
 
-        String symptom_text = "";
-        for (Symptom symptom : patient.getSymptoms()) {
-            symptom_text += symptom.toString() + ",  ";
-        }
-        symptoms_lbl.setText(symptom_text);
+            diagnosisMessageAlert.setVisible(false);
+            patient_info_lbl.setText(patient.toString());
 
-        for (Disease disease : patient.getDiseases()){
-            if (disease.getName().equals("Alzheimer")){
-                String probability = String.format("%.3f", disease.getScore());
-                alzheimer_prob.setText(probability + "%");
-                alzheimer_pbar.setProgress(disease.getScore()/100);
-            } else if (disease.getName().equals("Amyotrophic lateral sclerosis")) {
-                String probability = String.format("%.3f", disease.getScore());
-                amyotrophic_prob.setText(probability + "%");
-                amyotrophic_pbar.setProgress(disease.getScore()/100);
-            } else if (disease.getName().equals("Huntington")) {
-                String probability = String.format("%.3f", disease.getScore());
-                huntington_prob.setText(probability + "%");
-                huntington_pbar.setProgress(disease.getScore()/100);
-            } else if (disease.getName().equals("Multiple sclerosis")) {
-                String probability = String.format("%.3f", disease.getScore());
-                multiple_sclerosis_prob.setText(probability + "%");
-                multiple_sclerosis_pbar.setProgress(disease.getScore()/100);
-            } else if (disease.getName().equals("Myasthenia gravis")) {
-                String probability = String.format("%.3f", disease.getScore());
-                myasthenia_prob.setText(probability + "%");
-                myasthenia_pbar.setProgress(disease.getScore()/100);
-            } else if (disease.getName().equals("Parkinson")) {
-                String probability = String.format("%.3f", disease.getScore());
-                parkinson_prob.setText(probability + "%");
-                parkinson_pbar.setProgress(disease.getScore()/100);
+            String symptom_text = "";
+            for (Symptom symptom : patient.getSymptoms()) {
+                symptom_text += symptom.toString() + ",  ";
             }
+            symptoms_lbl.setText(symptom_text);
+
+            for (Disease disease : patient.getDiseases()) {
+                if (disease.getName().equals("Alzheimer")) {
+                    String probability = String.format("%.3f", disease.getScore());
+                    alzheimer_prob.setText(probability + "%");
+                    alzheimer_pbar.setProgress(disease.getScore() / 100);
+                } else if (disease.getName().equals("Amyotrophic lateral sclerosis")) {
+                    String probability = String.format("%.3f", disease.getScore());
+                    amyotrophic_prob.setText(probability + "%");
+                    amyotrophic_pbar.setProgress(disease.getScore() / 100);
+                } else if (disease.getName().equals("Huntington")) {
+                    String probability = String.format("%.3f", disease.getScore());
+                    huntington_prob.setText(probability + "%");
+                    huntington_pbar.setProgress(disease.getScore() / 100);
+                } else if (disease.getName().equals("Multiple sclerosis")) {
+                    String probability = String.format("%.3f", disease.getScore());
+                    multiple_sclerosis_prob.setText(probability + "%");
+                    multiple_sclerosis_pbar.setProgress(disease.getScore() / 100);
+                } else if (disease.getName().equals("Myasthenia gravis")) {
+                    String probability = String.format("%.3f", disease.getScore());
+                    myasthenia_prob.setText(probability + "%");
+                    myasthenia_pbar.setProgress(disease.getScore() / 100);
+                } else if (disease.getName().equals("Parkinson")) {
+                    String probability = String.format("%.3f", disease.getScore());
+                    parkinson_prob.setText(probability + "%");
+                    parkinson_pbar.setProgress(disease.getScore() / 100);
+                }
+            }
+
+            patient_info_lbl.setWrapText(true);
+            symptoms_lbl.setWrapText(true);
         }
-
-        patient_info_lbl.setWrapText(true);
-        symptoms_lbl.setWrapText(true);
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        sex_box.getItems().addAll("Male", "Female");
-        sex_box.setValue("Male");
-        patientUnit = new PatientUnit();
-        instance = RuleUnitProvider.get().createRuleUnitInstance(patientUnit);
-
+    private void createHyperlinkWithIcon(Hyperlink hyperlink, String url){
+        hyperlink.setOnMouseEntered(event -> hyperlink.setUnderline(true));
+        hyperlink.setOnMouseExited(event -> hyperlink.setUnderline(false));
+        hyperlink.setOnAction(event -> hostServices.showDocument(url));
     }
 
-    public void handleClose(WindowEvent event) {
+    public void setHostServices(HostServices hostServices) { this.hostServices = hostServices; }
+
+    private boolean isValidDate(LocalDate date) {
+        try {
+            LocalDate.of(date.getYear(), date.getMonth(), date.getDayOfMonth());
+            return true;
+        } catch (DateTimeException e) {
+            return false;
+        }
+    }
+
+    public void handleClose() {
         if (instance != null) {
-            System.out.println("cerrando instance");
             instance.close();
-            System.out.println("instance cerrada");
         }
     }
 }

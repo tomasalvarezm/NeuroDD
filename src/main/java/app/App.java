@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
@@ -22,7 +23,12 @@ public class App extends Application {
         stage.setTitle("Neurodegenerative Diagnosis");
         stage.setScene(scene);
         stage.setResizable(false);
+
+        stage.setOnCloseRequest(event -> handleClose(event));
         stage.show();
+
+        AppController controller = fxmlLoader.getController();
+        controller.setHostServices(getHostServices()
     }
 
     public static void main(String[] args) {
@@ -30,16 +36,17 @@ public class App extends Application {
     }
     private void handleClose(WindowEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmar cierre");
-        alert.setHeaderText("¿Estás seguro de que quieres cerrar la aplicación?");
-        alert.setContentText("Todos los cambios no guardados se perderán.");
+        alert.setTitle("Confirm Exit");
+        alert.setHeaderText("Are you sure you want to close the application?");
+//        alert.setContentText("Todos los cambios no guardados se perderán.");
+        ButtonType buttonTypeOK = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
+        alert.getButtonTypes().setAll(buttonTypeOK, buttonTypeCancel);
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.isPresent() && result.get() == ButtonType.OK) {
-            // Obtener el controlador de la ventana
+        if (result.isPresent() && result.get() == buttonTypeOK) {
             AppController controller = fxmlLoader.getController();
-            // Llamar al método handleClose del controlador
-            controller.handleClose(event);
+            controller.handleClose();
         } else {
             // Cancelar el cierre de la ventana
             event.consume();
