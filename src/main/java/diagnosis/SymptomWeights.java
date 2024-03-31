@@ -38,11 +38,9 @@ public class SymptomWeights {
             for (int rowIndex=3; rowIndex<=ws.getLastRowNum(); rowIndex++){
                 Row row = ws.getRow(rowIndex);
                 //For each row, iterate through all the columns
-                //String disease=row.getCell(0).getStringCellValue();
                 Iterator<Cell> cellIterator = row.cellIterator();
                 int aux=0;
                 Cell disease = row.getCell(0);
-                //System.out.println(disease.getStringCellValue());
                 switch (disease.getStringCellValue()){
                     case "Alzheimer":
                         this.alzheimer_weights = readingRows(ws,cellIterator);
@@ -119,8 +117,6 @@ public class SymptomWeights {
         }
         return maxScore;
     }
-
-
 
     public Map<Symptom, Integer> getAlzheimer_weights() {
         return alzheimer_weights;

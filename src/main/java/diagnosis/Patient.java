@@ -66,6 +66,9 @@ public class Patient {
             } else this.age = now.getYear() - birth.getYear();
         }
     }
+
+    public void clearSymptoms(){ this.symptoms.clear(); }
+
     @Override
     public String toString() {
         return  "Name: " + name + ",   " +

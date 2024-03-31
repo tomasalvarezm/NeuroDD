@@ -214,13 +214,13 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="patient_info_lbl" alignment="CENTER" prefHeight="76.0" prefWidth="557.0" textFill="WHITE" />
+                              <Label fx:id="patient_info_lbl" alignment="CENTER" prefHeight="50.0" prefWidth="557.0" textFill="WHITE" wrapText="true" />
                               <Label alignment="CENTER" prefHeight="30.0" prefWidth="161.0" text="SYMPTOMS" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="symptoms_lbl" alignment="CENTER" contentDisplay="CENTER" prefHeight="99.0" prefWidth="557.0" textAlignment="CENTER" textFill="WHITE" />
+                              <Label fx:id="symptoms_lbl" alignment="CENTER" contentDisplay="CENTER" maxWidth="650.0" prefHeight="120.0" style="-fx-background-color: #282828;" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                               <Label alignment="CENTER" prefHeight="30.0" prefWidth="161.0" text="DIAGNOSIS" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />

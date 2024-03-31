@@ -38,7 +38,7 @@ public class AppController implements Initializable {
     public CheckBox sleepDisturbance, communicationDifficulty, confusion, difficultyLearning;
     public CheckBox difficultyProblemSolving, inabilityPerformRoutineActivities, incompleteVoiding;
     public CheckBox lackOfAttention, memoryImpairment, orientationImpairment, scanningSpeech;
-    public CheckBox blurredVision, constipation, delirium, excessiveSalivation, hyperesthesia;
+    public CheckBox blurredVision, constipation, excessiveSalivation, hyperesthesia;
     public CheckBox hyperreflexia, increasedUrination, lossGagReflex, opticNeuritis;
     public CheckBox respiratoryCompromise, seizures, spasms, urinaryIncontinence, weightLoss;
     public TextField searchTextMotor, searchTextCognitive, searchTextPsychiatric, searchTextOthers;
@@ -68,6 +68,9 @@ public class AppController implements Initializable {
         sex_box.getItems().addAll(Sex.MALE, Sex.FEMALE);
         sex_box.setValue(Sex.MALE);
 
+        customizeButton(save_info_btn);
+        customizeButton(diagnose_btn);
+
         createHyperlinkWithIcon(alzheimer_link, "https://medlineplus.gov/alzheimersdisease.html");
         createHyperlinkWithIcon(amyotrophic_link, "https://www.ninds.nih.gov/health-information/disorders/amyotrophic-lateral-sclerosis-als");
         createHyperlinkWithIcon(huntington_link, "https://medlineplus.gov/huntingtonsdisease.html");
@@ -95,7 +98,7 @@ public class AppController implements Initializable {
                 alert.showAndWait();
         } else {
             ok_img.setOpacity(1);
-            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(3), ok_img);
+            FadeTransition fadeTransition = new FadeTransition(Duration.seconds(2.5), ok_img);
             fadeTransition.setFromValue(1.0);
             fadeTransition.setToValue(0.0);
             fadeTransition.playFromStart();
@@ -113,6 +116,8 @@ public class AppController implements Initializable {
             alert.getButtonTypes().setAll(new ButtonType("OK"));
             alert.showAndWait();
         } else {
+            patient.clearSymptoms();
+
             ArrayList<CheckBox> allCheckBoxes = new ArrayList<>();
             allCheckBoxes.addAll(getCheckBoxes(searchTextMotor, 2));
             allCheckBoxes.addAll(getCheckBoxes(searchTextCognitive, 5));
@@ -146,8 +151,6 @@ public class AppController implements Initializable {
             patient.calculateDiseaseScore(symptomWeights.getMultiple_sclerosis_weights(), "Multiple sclerosis", symptomWeights.max_score_multiple_sclerosis);
             patient.calculateDiseaseScore(symptomWeights.getMyasthenia_gravis_weights(), "Myasthenia gravis", symptomWeights.max_score_myasthenia_gravis);
             patient.calculateDiseaseScore(symptomWeights.getParkinson_weights(), "Parkinson", symptomWeights.max_score_parkinson);
-
-//            System.out.println(patient);
 
             diagnosisMessageAlert.setVisible(true);
         }
@@ -303,10 +306,13 @@ public class AppController implements Initializable {
                     parkinson_pbar.setProgress(disease.getScore() / 100);
                 }
             }
-
-            patient_info_lbl.setWrapText(true);
-            symptoms_lbl.setWrapText(true);
         }
+    }
+
+    private void customizeButton(Button button) {
+        button.setOnMouseEntered(event -> button.setStyle("-fx-background-color: #4d88eb;"));
+        button.setOnMouseExited(event -> button.setStyle("-fx-background-color:  #357bf2;"));
+        button.setOnMousePressed(event -> button.setStyle("-fx-background-color:  #2b74f0;"));
     }
 
     private void createHyperlinkWithIcon(Hyperlink hyperlink, String url){
@@ -316,7 +322,6 @@ public class AppController implements Initializable {
     }
 
     public void setHostServices(HostServices hostServices) { this.hostServices = hostServices; }
-
 
     public void handleClose() {
         if (instance != null) {
