@@ -117,6 +117,7 @@ public class AppController implements Initializable {
             alert.showAndWait();
         } else {
             patient.clearSymptoms();
+            patient.clearDiseases();
 
             ArrayList<CheckBox> allCheckBoxes = new ArrayList<>();
             allCheckBoxes.addAll(getCheckBoxes(searchTextMotor, 2));
@@ -152,6 +153,7 @@ public class AppController implements Initializable {
             patient.calculateDiseaseScore(symptomWeights.getMyasthenia_gravis_weights(), "Myasthenia gravis", symptomWeights.max_score_myasthenia_gravis);
             patient.calculateDiseaseScore(symptomWeights.getParkinson_weights(), "Parkinson", symptomWeights.max_score_parkinson);
 
+            System.out.println(patient.getDiseases());
             diagnosisMessageAlert.setVisible(true);
         }
     }

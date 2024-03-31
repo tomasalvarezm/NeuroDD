@@ -69,6 +69,8 @@ public class Patient {
 
     public void clearSymptoms(){ this.symptoms.clear(); }
 
+    public void clearDiseases() { this.diseases.clear(); }
+
     @Override
     public String toString() {
         return  "Name: " + name + ",   " +
@@ -78,4 +80,5 @@ public class Patient {
                 "Sex: " + sex ;
 
     }
+
 }
