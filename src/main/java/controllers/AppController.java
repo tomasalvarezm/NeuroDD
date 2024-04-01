@@ -7,21 +7,19 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
-import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import org.drools.ruleunits.api.RuleUnitInstance;
 import org.drools.ruleunits.api.RuleUnitProvider;
-//import org.kie.api.KieServices;
-//import org.kie.api.runtime.KieContainer;
 
 import java.net.URL;
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -94,7 +92,7 @@ public class AppController implements Initializable {
             alert.setContentText("Introduced your full name");
             alert.showAndWait();
         } else if (date_picker.getValue() == null){
-                alert.setContentText("Choose your date of birth");
+                alert.setContentText("Choose your date of birth or date format invalid");
                 alert.showAndWait();
         } else {
             ok_img.setOpacity(1);
@@ -102,6 +100,7 @@ public class AppController implements Initializable {
             fadeTransition.setFromValue(1.0);
             fadeTransition.setToValue(0.0);
             fadeTransition.playFromStart();
+
             patient = new Patient(dni_txt.getText(), name_txt.getText(), date_picker.getValue(), (Sex) sex_box.getValue());
         }
     }
@@ -153,7 +152,6 @@ public class AppController implements Initializable {
             patient.calculateDiseaseScore(symptomWeights.getMyasthenia_gravis_weights(), "Myasthenia gravis", symptomWeights.max_score_myasthenia_gravis);
             patient.calculateDiseaseScore(symptomWeights.getParkinson_weights(), "Parkinson", symptomWeights.max_score_parkinson);
 
-            System.out.println(patient.getDiseases());
             diagnosisMessageAlert.setVisible(true);
         }
     }

@@ -220,7 +220,7 @@
                                     <Font name="System Bold" size="18.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="symptoms_lbl" alignment="CENTER" contentDisplay="CENTER" maxWidth="650.0" prefHeight="120.0" style="-fx-background-color: #282828;" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
+                              <Label fx:id="symptoms_lbl" alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="650.0" prefHeight="120.0" style="-fx-background-color: #282828;" textAlignment="CENTER" textFill="WHITE" wrapText="true" />
                               <Label alignment="CENTER" prefHeight="30.0" prefWidth="161.0" text="DIAGNOSIS" textFill="WHITE">
                                  <font>
                                     <Font name="System Bold" size="18.0" />

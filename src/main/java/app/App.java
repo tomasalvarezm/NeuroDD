@@ -38,7 +38,6 @@ public class App extends Application {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirm Exit");
         alert.setHeaderText("Are you sure you want to close the application?");
-//        alert.setContentText("Todos los cambios no guardados se perderán.");
         ButtonType buttonTypeOK = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
         ButtonType buttonTypeCancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
 
